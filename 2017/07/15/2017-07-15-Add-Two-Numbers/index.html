@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="leet hash-table," />
+  <meta name="keywords" content="leet pointer struct linkedlist," />
 
 
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="Question给定一个整型数组，返回两个数的索引，这两个数之和等于目标值。你可以认为每一组输入只有一个解，并且不允许使用一个数两次.例如：给定nums=[2,7,11,15],target=9,由于nums[0]+nums[1]=target,所以返回[0,1].">
-<meta name="keywords" content="leet hash-table">
+<meta name="description" content="Question给定两个采用链表表示的非负整数，数字采用逆序存储在每一个节点中，加和这两个数并以链表形式返回.  Solution">
+<meta name="keywords" content="leet pointer struct linkedlist">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Two-Sum">
-<meta property="og:url" content="http://yoursite.com/2017/07/13/2017-07-13-Two-Sum/index.html">
+<meta property="og:title" content="Add-Two-Numbers">
+<meta property="og:url" content="http://yoursite.com/2017/07/15/2017-07-15-Add-Two-Numbers/index.html">
 <meta property="og:site_name" content="YLX">
-<meta property="og:description" content="Question给定一个整型数组，返回两个数的索引，这两个数之和等于目标值。你可以认为每一组输入只有一个解，并且不允许使用一个数两次.例如：给定nums=[2,7,11,15],target=9,由于nums[0]+nums[1]=target,所以返回[0,1].">
-<meta property="og:updated_time" content="2017-07-15T04:02:25.611Z">
+<meta property="og:description" content="Question给定两个采用链表表示的非负整数，数字采用逆序存储在每一个节点中，加和这两个数并以链表形式返回.  Solution">
+<meta property="og:updated_time" content="2017-07-15T04:02:27.149Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Two-Sum">
-<meta name="twitter:description" content="Question给定一个整型数组，返回两个数的索引，这两个数之和等于目标值。你可以认为每一组输入只有一个解，并且不允许使用一个数两次.例如：给定nums=[2,7,11,15],target=9,由于nums[0]+nums[1]=target,所以返回[0,1].">
+<meta name="twitter:title" content="Add-Two-Numbers">
+<meta name="twitter:description" content="Question给定两个采用链表表示的非负整数，数字采用逆序存储在每一个节点中，加和这两个数并以链表形式返回.  Solution">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/13/2017-07-13-Two-Sum/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/15/2017-07-15-Add-Two-Numbers/"/>
 
 
 
 
 
-  <title>Two-Sum | YLX</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Add-Two-Numbers | YLX</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -256,7 +256,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/13/2017-07-13-Two-Sum/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/15/2017-07-15-Add-Two-Numbers/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yunlaixu">
@@ -273,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Two-Sum</h1>
+          <h1 class="post-title" itemprop="name headline">Add-Two-Numbers</h1>
         
 
         <div class="post-meta">
@@ -285,8 +285,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-13T18:48:49+08:00">
-                2017-07-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-15T10:56:06+08:00">
+                2017-07-15
               </time>
             
 
@@ -320,16 +320,13 @@
       
 
       
-        <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>给定一个整型数组，返回两个数的索引，这两个数之和等于目标值。你可以认为每一组输入只有一个解，并且不允许使用一个数两次.<br>例如：<br>给定nums=[2,7,11,15],target=9,由于nums[0]+nums[1]=target,所以返回[0,1].</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Approach-1-Brute-Force"><a href="#Approach-1-Brute-Force" class="headerlink" title="Approach #1(Brute Force)"></a>Approach #1(Brute Force)</h3><p>遍历每一个数以寻找另一个数等于$target-x$.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)&#123;</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; result;</div><div class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> s = nums.size();</div><div class="line">    <span class="keyword">int</span> s_ = s<span class="number">-1</span>;</div><div class="line">    <span class="keyword">for</span>(; i&lt;s_; i++)&#123;</div><div class="line">        <span class="keyword">for</span>(j=i+<span class="number">1</span>; j&lt;s; j++)&#123;</div><div class="line">            <span class="keyword">if</span>((target-nums[i])==nums[j])&#123;</div><div class="line">                result.push_back(i);</div><div class="line">                result.push_back(j);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>给定两个采用链表表示的非负整数，数字采用逆序存储在每一个节点中，加和这两个数并以链表形式返回.</p>
+<hr>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><a id="more"></a>
+<p>直接遍历两个链表，存储好商数，注意判断链表非空，以及最后可能需要额外添加一个节点，还有就是语法了Orz(c++的new，指针的.和-&gt;，不要轻易尝试&amp;).<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"> ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) &#123;</div><div class="line">    int r = l1-&gt;val + l2-&gt;val;</div><div class="line">    int quotient = r / 10;</div><div class="line">    ListNode *result = new ListNode(r % 10);</div><div class="line">    ListNode *current = result;</div><div class="line">    l1 = l1-&gt;next;</div><div class="line">    l2 = l2-&gt;next;</div><div class="line">    while (l1 &amp;&amp; l2) &#123;</div><div class="line">        r = l1-&gt;val + l2-&gt;val + quotient;</div><div class="line">        quotient = r / 10;</div><div class="line">        ListNode *newNode = new ListNode(r % 10);</div><div class="line">        current-&gt;next = newNode;</div><div class="line">        current = current-&gt;next;</div><div class="line">        l1 = l1-&gt;next;</div><div class="line">        l2 = l2-&gt;next;</div><div class="line">    &#125;</div><div class="line">    if (l1 || l2) &#123;</div><div class="line">        while (l1) &#123;</div><div class="line">            r = l1-&gt;val + quotient;</div><div class="line">            quotient = r / 10;</div><div class="line">            current-&gt;next = new ListNode(r % 10);</div><div class="line">            current = current-&gt;next;</div><div class="line">            l1 = l1-&gt;next;</div><div class="line">        &#125;</div><div class="line">        while (l2) &#123;</div><div class="line">            r = l2-&gt;val + quotient;</div><div class="line">            quotient = r / 10;</div><div class="line">            current-&gt;next = new ListNode(r % 10);</div><div class="line">            current = current-&gt;next;</div><div class="line">            l2 = l2-&gt;next;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    if (quotient != 0) &#123;</div><div class="line">        current-&gt;next = new ListNode(quotient);</div><div class="line">    &#125;</div><div class="line">    return result;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <ul>
-<li>Time complexity: $O(n^2)$. 对于每一个数，寻找另一个数所花时间是$O(n)$.</li>
-<li>Space complexity: $O(1)$.</li>
-</ul>
-<h3 id="Apporoach-2-One-pass-Hash-Table"><a href="#Apporoach-2-One-pass-Hash-Table" class="headerlink" title="Apporoach #2(One-pass Hash Table)"></a>Apporoach #2(One-pass Hash Table)</h3><p>同样，我们遍历每一个数来寻找是不是存在第二个数等于$target-x$，但是借助于HashTable结构可以将寻找过程的时间复杂度从$O(n)$降到$(O(1)$. 为了使用HashTable结构加快搜索，我们需要在寻找的同时维护一个从数到索引的映射表.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; result;</div><div class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; table;</div><div class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> s = nums.size();</div><div class="line">        <span class="keyword">for</span>(; j&lt;s; j++)&#123;</div><div class="line">            <span class="keyword">if</span>(table.find(target-nums[j]) != table.end())&#123;</div><div class="line">                result.push_back(table.at(target-nums[j]));</div><div class="line">                result.push_back(j);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            table[nums[j]] = j;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<ul>
-<li>Time complexity: $O(n)$. 我们仅仅遍历数组一次，每一次查询时间是$O(1)$.</li>
-<li>Space complexity: $O(n)$. 我们需要额外的空间来维护一个映射表，这个表最多会存储$n$个元素.</li>
+<li>Time complexity: $O(max(m,n))$. 这里$m$和$n$分别表示$l1$和$l2$的长度.</li>
+<li>Space complexity: $O(max(m,n))$.</li>
 </ul>
 
       
@@ -360,7 +357,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/leet-hash-table/" rel="tag"># leet hash-table</a>
+            <a href="/tags/leet-pointer-struct-linkedlist/" rel="tag"># leet pointer struct linkedlist</a>
           
         </div>
       
@@ -373,8 +370,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/12/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2017/07/13/2017-07-13-About-Hexo-Blog/" rel="next" title="About Hexo Blog">
+                <i class="fa fa-chevron-left"></i> About Hexo Blog
               </a>
             
           </div>
@@ -383,8 +380,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/13/2017-07-13-About-Hexo-Blog/" rel="prev" title="About Hexo Blog">
-                About Hexo Blog <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/15/2017-07-15-When-Can-Machines-Learn-The-Learning-Problem/" rel="prev" title="When Can Machines Learn(The Learning Problem)">
+                When Can Machines Learn(The Learning Problem) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -535,7 +532,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Question"><span class="nav-number">1.</span> <span class="nav-text">Question</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">3.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach-1-Brute-Force"><span class="nav-number">3.1.</span> <span class="nav-text">Approach #1(Brute Force)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apporoach-2-One-pass-Hash-Table"><span class="nav-number">3.2.</span> <span class="nav-text">Apporoach #2(One-pass Hash Table)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Question"><span class="nav-number">1.</span> <span class="nav-text">Question</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>
