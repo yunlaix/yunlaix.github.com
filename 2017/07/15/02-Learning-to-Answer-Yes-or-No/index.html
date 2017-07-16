@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="lecture PLA," />
 
 
 
@@ -93,16 +93,19 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="Perceptron Hypothesis Set For $x=(x_1,x_2,…,x_d)$ ‘features of customer’, compute a weighted ‘score’ and:$\quad \quad \quad$ approve credit if $\quad \sum_{i=1}^{d}{w_ix_i} &amp;gt; threshold$$\quad \qua">
+<meta name="keywords" content="lecture PLA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/07/12/hello-world/index.html">
+<meta property="og:title" content="02-Learning-to-Answer-Yes-or-No">
+<meta property="og:url" content="http://yoursite.com/2017/07/15/02-Learning-to-Answer-Yes-or-No/index.html">
 <meta property="og:site_name" content="YLX">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta property="og:updated_time" content="2017-07-14T02:49:43.779Z">
+<meta property="og:description" content="Perceptron Hypothesis Set For $x=(x_1,x_2,…,x_d)$ ‘features of customer’, compute a weighted ‘score’ and:$\quad \quad \quad$ approve credit if $\quad \sum_{i=1}^{d}{w_ix_i} &amp;gt; threshold$$\quad \qua">
+<meta property="og:image" content="http://yoursite.com/images/perceptrons.PNG">
+<meta property="og:updated_time" content="2017-07-16T13:39:33.895Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="02-Learning-to-Answer-Yes-or-No">
+<meta name="twitter:description" content="Perceptron Hypothesis Set For $x=(x_1,x_2,…,x_d)$ ‘features of customer’, compute a weighted ‘score’ and:$\quad \quad \quad$ approve credit if $\quad \sum_{i=1}^{d}{w_ix_i} &amp;gt; threshold$$\quad \qua">
+<meta name="twitter:image" content="http://yoursite.com/images/perceptrons.PNG">
 
 
 
@@ -130,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/12/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/15/02-Learning-to-Answer-Yes-or-No/"/>
 
 
 
 
 
-  <title>Hello World | YLX</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>02-Learning-to-Answer-Yes-or-No | YLX</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -255,7 +258,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/12/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/15/02-Learning-to-Answer-Yes-or-No/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yunlaixu">
@@ -272,7 +275,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">02-Learning-to-Answer-Yes-or-No</h1>
         
 
         <div class="post-meta">
@@ -284,8 +287,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-12T14:32:59+08:00">
-                2017-07-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-15T14:38:19+08:00">
+                2017-07-15
               </time>
             
 
@@ -319,16 +322,57 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <hr>
+<h1 id="Perceptron-Hypothesis-Set"><a href="#Perceptron-Hypothesis-Set" class="headerlink" title="Perceptron Hypothesis Set"></a>Perceptron Hypothesis Set</h1><ul>
+<li>For $x=(x_1,x_2,…,x_d)$ ‘features of customer’, compute a weighted ‘score’ and:<br>$\quad \quad \quad$ approve credit if $\quad \sum_{i=1}^{d}{w_ix_i} &gt; threshold$<br>$\quad \quad \quad \quad \ $ deny credit if $\quad \sum_{i=1}^{d}{w_ix_i} &lt; threshold$</li>
+<li>$y$: {+1(good), -1(bad)}, linear formula $h \epsilon H$ are:<br>$\quad \quad \quad$ $h(x)=sign((\sum_{i=1}^{d}{w_ix_i})-threshold)$</li>
+<li>Vector form:<br>$<br>\begin{eqnarray}<br>h(x) &amp;=&amp; sign((\sum_{i=1}^{d}{w_ix_i})-threshold)\\<br>&amp;=&amp;sign((\sum_{i=1}^{d}{w_ix_i})+(-threshold)·(+1))\\<br>&amp;=&amp;sign(\sum_{i=0}^{d}{w_ix_i})\\<br>&amp;=&amp;sign(w^Tx)<br>\end{eqnarray}<br>$</li>
+</ul>
+<a id="more"></a>
+<blockquote>
+<p>Perceptrons in $R^2$: $h(x)=sign(w_0+w_1x_1+w_2x_2)$<br><img src="/images/perceptrons.PNG" alt=""></p>
+<ul>
+<li>customer features $x$: points on the plane (or points in $R^d$)</li>
+<li>lables $y$: 。(+1), x(-1)</li>
+<li>hypothesis $h$: lines(or hyperplanes in $R^d$)</li>
+<li>different line classifies customers differently<br>perceptrons $\Leftrightarrow$linear (binary) classifiers</li>
+</ul>
+</blockquote>
+<hr>
+<h1 id="Percepton-Learning-Algorithm"><a href="#Percepton-Learning-Algorithm" class="headerlink" title="Percepton Learning Algorithm"></a>Percepton Learning Algorithm</h1><p>Select $g$ from $H$, where $H$=all possible perceptrons.</p>
+<ul>
+<li>want: $g\approx f$ on $D$, ideally $g(x_n)=f(x_n)=y_n$</li>
+<li>diffcult: $H$ is of infinite size</li>
+<li>idea: start from some $g_0$, and ‘correct’ its mistakes on $D$</li>
+</ul>
+<p>in PLA, we can represent $g_0$ by its weight vector $w_0$.</p>
+<blockquote>
+<p>For t = 0,1,…<br>$\quad$find <strong>the next</strong> mistake of $w_t$ called $(x_{n(t)}, y_{n(t)})$<br>$\quad\quad\quad\quad sign(w_t^Tx_{n(t)})\neq y_{n(t)}$<br>$\quad$(try to) correct the mistake by<br>$\quad\quad\quad\quad w_{t+1}\leftarrow w_t+y_{n(t)}x_{n(t)}$<br>… until <em>a full cycle of not encountering mistakes</em><br>return last $w$ (called $w_{PLA}$) as $g$<br>(<strong>next</strong> can follow naive cycle(1,…,N) or precomputed random cycle)</p>
+</blockquote>
+<hr>
+<h1 id="Guarantee-of-PLA"><a href="#Guarantee-of-PLA" class="headerlink" title="Guarantee of PLA"></a>Guarantee of PLA</h1><p><strong>if(linear separable), after ‘enough’ corrections, any PLA variant halts.</strong></p>
+<h2 id="PLA-Fact-w-t-Gets-More-Aligned-with-w-f"><a href="#PLA-Fact-w-t-Gets-More-Aligned-with-w-f" class="headerlink" title="PLA Fact: $w_t$ Gets More Aligned with $w_f$"></a>PLA Fact: $w_t$ Gets More Aligned with $w_f$</h2><p>linear separable $D\ \Leftrightarrow$  exists perfect $w_f$ such that $y_n=sign(w_f^Tx_n)$</p>
+<ul>
+<li>$w_f$ perfect hence every $x_n$ correctly away from line:<br>$\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad y_{n(t)}w_f^Tx_{n(t)}\geqslant \mathop{min}\limits_ny_nw_f^Tx_n&gt;0$</li>
+<li>$w_f^Tw_t\uparrow$ by updating with any $(x_{n(t)},y_{n(t)})$<br>$<br>\begin{eqnarray}<br>w_f^Tw_{t+1}&amp;=&amp;w_f^T(w_t+y_{n(t)}x_{n(t)})\\<br>&amp;\geq&amp;w_f^Tw_t+\mathop{min}\limits_ny_nw_f^Tx_n\\<br>&amp;&gt;&amp;w_f^Tw_t+0<br>\end{eqnarray}<br>$</li>
+</ul>
+<p>$w_t$ appears more aligned with w_f after update.</p>
+<h2 id="PLA-Fact-w-t-Does-not-Grow-too-Fast"><a href="#PLA-Fact-w-t-Does-not-Grow-too-Fast" class="headerlink" title="PLA Fact: $w_t$ Does not Grow too Fast"></a>PLA Fact: $w_t$ Does not Grow too Fast</h2><p>$w_t$ changed only when mistake $\Leftrightarrow sign(w_f^Tx_{n(t)})\neq y_{n(t)}\Leftrightarrow y_{n(t)}w_f^Tx_{n(t)}\leqslant 0$</p>
+<ul>
+<li>mistake ‘limits’ $|w_t|^2$ growth, even when updating with ‘longest’ $x_n$<br>$<br>\begin{eqnarray}<br>|w_{t+1}|^2&amp;=&amp;|w_t+y_{n(t)}x_{n(t)}|^2\\<br>&amp;=&amp;|w_t|^2+2y_{n(t)}w_t^Tx_{n(t)}+|y_{n(t)}x_{n(t)}|^2\\<br>&amp;\leq&amp;|w_t|^2+0+|y_{n(t)}x_{n(t)}|^2\\<br>&amp;\leq&amp;|w_t|^2+\mathop{max}\limits_n|y_nx_n|^2<br>\end{eqnarray}<br>$<blockquote>
+<p>start from $w_0=0$, after $T$ mistake corrections:<br>$\frac {w_f^T}{|w_f|} \frac {w_T}{|w_T|} \geq \sqrt{T}·constant$<br>PLA告诉我们只要线性可分并且通过错误修正，那么PLA会停下来. 这里PLA实现简单，而且适用于任何维度$d$.<br>问题在于我们不知道是否$D$线性可分，并且不确定到停止需要多长时间(虽然实际上很快).</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h2 id="Non-Separable-Data-Learning-with-Noisy-data"><a href="#Non-Separable-Data-Learning-with-Noisy-data" class="headerlink" title="Non-Separable Data(Learning with Noisy data)"></a>Non-Separable Data(Learning with Noisy data)</h2><ul>
+<li>assume ‘little’ noise: $y_n=f(x_n)$ usually</li>
+<li>if so, $g\approx  f$ on $D\Leftrightarrow y_n=g(x_n)$ usually</li>
+<li>how about<br>$w_g\leftarrow \mathop{argmin}\limits_w \sum_{n=1}^N [y_n\neq sign(w^Tx_n)]$<br>——NP-hard to solve, unfortunately.</li>
+</ul>
+<blockquote>
+<p><strong>Pocket Algorithm</strong>: modify PLA algorithm (black lines) by keeping best weights in pocket<br>initialize pocket weights $\hat{w}$<br>For t=0,1,…<br>$\quad\quad$find a (random) mistake of $w_t$ called $(x_{n(t)}, y_{n(t)})$<br>$\quad\quad$(try to) correct the mistake by<br>$\quad\quad\quad\quad w_{t+1}\leftarrow w_t+y_{n(t)}x_{n(t)}$<br>$\quad\quad$if $w_{t+1}$ makes fewer mistakes than $\hat{w}$, replace $\hat{w}$ by $w_{t+1}$<br>…until enough iterations<br>return $\hat{w}$ (called $w_{POCKET}$) as $g$</p>
+</blockquote>
 
       
     </div>
@@ -356,6 +400,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/lecture-PLA/" rel="tag"># lecture PLA</a>
+          
+        </div>
+      
 
       
       
@@ -365,14 +415,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/07/15/01-When-Can-Machines-Learn-The-Learning-Problem/" rel="next" title="01-When-Can-Machines-Learn(The-Learning-Problem)">
+                <i class="fa fa-chevron-left"></i> 01-When-Can-Machines-Learn(The-Learning-Problem)
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/13/2017-07-13-Two-Sum/" rel="prev" title="Two-Sum">
-                Two-Sum <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/16/03-Types-of-Learning/" rel="prev" title="03-Types-of-Learning">
+                03-Types-of-Learning <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -523,7 +577,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Perceptron-Hypothesis-Set"><span class="nav-number">1.</span> <span class="nav-text">Perceptron Hypothesis Set</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Percepton-Learning-Algorithm"><span class="nav-number">2.</span> <span class="nav-text">Percepton Learning Algorithm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Guarantee-of-PLA"><span class="nav-number">3.</span> <span class="nav-text">Guarantee of PLA</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PLA-Fact-w-t-Gets-More-Aligned-with-w-f"><span class="nav-number">3.1.</span> <span class="nav-text">PLA Fact: $w_t$ Gets More Aligned with $w_f$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PLA-Fact-w-t-Does-not-Grow-too-Fast"><span class="nav-number">3.2.</span> <span class="nav-text">PLA Fact: $w_t$ Does not Grow too Fast</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-Separable-Data-Learning-with-Noisy-data"><span class="nav-number">3.3.</span> <span class="nav-text">Non-Separable Data(Learning with Noisy data)</span></a></li></ol></li></ol></div>
             
 
           </div>
