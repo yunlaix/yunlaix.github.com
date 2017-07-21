@@ -1,0 +1,776 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="lecture VCBound," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Trade-off on M can we make sure that $E_{out}(g)$ is close enough to $E_{in}(g)$ ? can we make $E_{out}(g)$ small enough?  $\mathbb{P}[BAD]\leq 2·M·exp(…)$对于小的M来说，我们可以做到第一点，但是第二点做不到，因为选择太少了；对于大的M来说，我">
+<meta name="keywords" content="lecture VCBound">
+<meta property="og:type" content="article">
+<meta property="og:title" content="05-06-From-M-to-m">
+<meta property="og:url" content="http://yoursite.com/2017/07/17/05-06-From-M-to-m/index.html">
+<meta property="og:site_name" content="YLX">
+<meta property="og:description" content="Trade-off on M can we make sure that $E_{out}(g)$ is close enough to $E_{in}(g)$ ? can we make $E_{out}(g)$ small enough?  $\mathbb{P}[BAD]\leq 2·M·exp(…)$对于小的M来说，我们可以做到第一点，但是第二点做不到，因为选择太少了；对于大的M来说，我">
+<meta property="og:image" content="http://yoursite.com/images/table1.PNG">
+<meta property="og:image" content="http://yoursite.com/images/table2.PNG">
+<meta property="og:image" content="http://yoursite.com/images/table3.PNG">
+<meta property="og:image" content="http://yoursite.com/images/table4.PNG">
+<meta property="og:image" content="http://yoursite.com/images/table5.PNG">
+<meta property="og:image" content="http://yoursite.com/images/step1.PNG">
+<meta property="og:updated_time" content="2017-07-17T11:36:14.745Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="05-06-From-M-to-m">
+<meta name="twitter:description" content="Trade-off on M can we make sure that $E_{out}(g)$ is close enough to $E_{in}(g)$ ? can we make $E_{out}(g)$ small enough?  $\mathbb{P}[BAD]\leq 2·M·exp(…)$对于小的M来说，我们可以做到第一点，但是第二点做不到，因为选择太少了；对于大的M来说，我">
+<meta name="twitter:image" content="http://yoursite.com/images/table1.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/17/05-06-From-M-to-m/"/>
+
+
+
+
+
+  <title>05-06-From-M-to-m | YLX</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YLX</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/17/05-06-From-M-to-m/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yunlaixu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YLX">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">05-06-From-M-to-m</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-17T19:31:49+08:00">
+                2017-07-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h1 id="Trade-off-on-M"><a href="#Trade-off-on-M" class="headerlink" title="Trade-off on M"></a>Trade-off on M</h1><ol>
+<li>can we make sure that $E_{out}(g)$ is close enough to $E_{in}(g)$ ?</li>
+<li>can we make $E_{out}(g)$ small enough?</li>
+</ol>
+<p>$\mathbb{P}[BAD]\leq 2·M·exp(…)$<br>对于小的M来说，我们可以做到第一点，但是第二点做不到，因为选择太少了；<br>对于大的M来说，我们可以做到第二点，但是第一点做不到.</p>
+<blockquote>
+<p>$\mathbb{P}[|E_{in}(g)-E_{out}(g)|&gt;\epsilon]\leq 2·M·exp(-2\epsilon^2N)$</p>
+</blockquote>
+<a id="more"></a>
+<p><strong>overlapping</strong> for similar hypothesis $h_1\approx h_2$<br>to account for <strong>overlapping</strong>, we can group similar hypothesis by kind.<br><em>lines in 2D</em><br>| N |数量(effective(N))|<br>| :—–:| :—-:  |<br>| 1   |   2     |<br>| 2|   4   |<br>| 3 |  8  |<br>|4|$14&lt;2^N$|</p>
+<blockquote>
+<p>we can replace M by effective(N)</p>
+</blockquote>
+<hr>
+<h1 id="Effective-Number-of-Hypothesis"><a href="#Effective-Number-of-Hypothesis" class="headerlink" title="Effective Number of Hypothesis"></a>Effective Number of Hypothesis</h1><p>$h(x_1,x_2,…,x_N)$ called a dichotomy: hypothesis ‘limited’ to the eyes of $x_1,x_2,…,x_N$<br>$h(x_1,x_2,…,x_N)$ all dichotomies ‘implemented’ by $H$ on $x_1,x_2,…,x_N$ with upper bounded by $2^N$<br>仅对每一个在数据集上的不同划分进行计数，不同的假设</p>
+<blockquote>
+<p><strong>Growth Function</strong>: remove dependence by taking max of all possible $(x_1,x_2,…,x_N)$<br>$m_H(N)=\mathop{max}\limits_{x_1,x_2,…,x_N\epsilon \chi}|H(x_1,x_2,…,x_N)|$</p>
+<ul>
+<li><em>positive rays</em> : $\qquad \qquad m_H(N)=N+1$</li>
+<li><em>positive intervals</em> : $\qquad\ \ m_H(N)=0.5·N^2+0.5·N+1$</li>
+<li><em>convex sets</em> : $\qquad\qquad\ \ m_H(N)=2^N$</li>
+<li><em>2D perceptrons</em> : $\qquad\ \ \ \  m_H(N)&lt;2^N\ in\ some\ cases$</li>
+</ul>
+<p><strong>Break Point</strong>: if no k inputs can be shattered by $H$, call k a break point for $H$. Will foucus on minimum break point k.</p>
+<ul>
+<li><em>positive rays</em> : $O(N)$ break point at 2</li>
+<li><em>positive intervals</em> : $O(N^2)$ break point at 3</li>
+<li><em>convex sets</em> : $O(2^N)$ no break point</li>
+<li><em>2D perceptrons</em> : break point at 4</li>
+</ul>
+<p>推论：$m_H(N)=O(N^{k-1})$</p>
+</blockquote>
+<hr>
+<h1 id="Restriction-of-Break-Point"><a href="#Restriction-of-Break-Point" class="headerlink" title="Restriction of Break Point"></a>Restriction of Break Point</h1><p>e.g. 当minimum break point k=2时，在N=3时，maximum possible=4&lt;&lt;$2^3$<br>—&gt;break point k restricts maximum possible $m_H(N)$ a lot for $N&gt;k$<br>idea: $m_H(N) \leq\ maximum\ possible\ m_H(N)\ given\ k \ \ \leq\ poly(N)$</p>
+<hr>
+<h1 id="Bounding-Function"><a href="#Bounding-Function" class="headerlink" title="Bounding Function"></a>Bounding Function</h1><blockquote>
+<p>$B(N,K)$ : maximum possible $m_H(N)$ when break point = k<br>Table of Bounding Function:<br><img src="/images/table1.PNG" alt=""><br>这里我们知道B(2,2)=3; B(3,2)=4<br><img src="/images/table2.PNG" alt=""><br>当然B(N,1)=1<br><img src="/images/table3.PNG" alt=""><br>这里当$N&lt;k,\ B(N,k)=2^N$<br><img src="/images/table4.PNG" alt=""><br>当$N=k,\ B(N,k)=2^N-1$<br><img src="/images/table5.PNG" alt=""><br><strong>$B(N,k)\leq B(N-1,k)+B(N-1,k-1)$</strong></p>
+<p>Bounding Function: The Theorem<br>$B(N,k)\leq \sum_{i=0}^{k-1}\binom{N}{i}$<br>右边最高项是$N^{k-1}\Rightarrow m_H(N)\ is\ poly(N)\ if\ break\ point\ exists$.<br>$’\leq’\ can\ be\ ‘=’\ actually$.</p>
+</blockquote>
+<hr>
+<h1 id="Replace-M-by-m-H-N"><a href="#Replace-M-by-m-H-N" class="headerlink" title="Replace M by $m_H(N)$"></a>Replace M by $m_H(N)$</h1><p>want: $\mathbb{P}[\exists h\epsilon H\ s.t.\ |E_{in}(h)-E_{out}(h)|&gt;\epsilon]\leq 2·m_H(N)·exp(-2\epsilon^2N)$<br>from: $\mathbb{P}[\exists h\epsilon H\ s.t.\ |E_{in}(h)-E_{out}(h)|&gt;\epsilon]\leq 2·M·exp(-2\epsilon^2N)$<br>但我们不能够直接这么做，因为原始式子中|H|是无限的，$E_{out}(h)$是无限的，之前所讨论的是基于采样的in-sample N. 所以为了替换成功我们还需要作些推导.</p>
+<blockquote>
+<p><strong>Step1</strong>: Replace $E_{out}\ by\ E_{in}^{‘}$, i.e. sample verification set $D’$ of size N to caculate $E_{in}^{‘}$<br><img src="/images/step1.PNG" alt=""><br>$\frac {1}{2}\mathbb{P}[\exists h\epsilon H\ s.t.\ |E_{in}(h)-E_{out}(h)|&gt;\epsilon]\leq \mathbb{P}[\exists h\epsilon H\ s.t.\ |E_{in}(h)-E_{in}^{‘}(h)|&gt;\frac {\epsilon}{2}]$<br>对于上式，基于从$E_{out}$ 到 $E_{in}^{‘}$ 的替换，第一个1/2表示替换之后式子中差值的绝对值大于误差值的概率增加了一倍；第二个1/2表示更加严格的误差限制(数学需要？).</p>
+<p><strong>Step2</strong>: Decompose $H$ by Kind<br>$BAD\leq 2\mathbb{P}[\exists h\epsilon H\ s.t.\ |E_{in}(h)-E_{in}^{‘}(h)|&gt;\frac {\epsilon}{2}]\\<br>\qquad\ \leq 2m_H(N)\mathbb{P}[fixed\ h\ s.t.\ |E_{in}(h)-E_{in}^{‘}(h)|&gt;\frac {\epsilon}{2}]$<br>$E_{in}(h)$ 有 N 笔数据，$E_{in}^{‘}(h)$ 也有 N 笔不同的数据，无限的 $H$ 变成了$|H(x_1,…,x_N,x_1^{‘},…,x_N^{‘})|$，这样我们终于可以使用$m_H(2N)$来计算BAD-overlap了.</p>
+<p><strong>Step3</strong>: Use Hoeffding without Replacement<br>$BAD \leq 2m_H(N)\mathbb{P}[fixed\ h\ s.t.\ |E_{in}(h)-E_{in}^{‘}(h)|&gt;\frac {\epsilon}{2}]\\<br>\qquad\ =2m_H(N)\mathbb{P}[fixed\ h\ s.t.\ |E_{in}(h)-\frac{E_{in}+E_{in}^{‘}(h)}{2}|&gt;\frac {\epsilon}{4}]\\<br>\qquad\ \leq 2m_H(N)·2exp(-2(\frac{\epsilon}{4})^2N)$<br>其中的代换是很有必要的，因为比较第一次sample与两次sample平均的$E$是使用Hoeffding的条件.</p>
+</blockquote>
+<p><strong>Vapnik-Chervonenkis (VC) bound</strong>:<br>$\mathbb{P}[\exists h\epsilon H\ s.t.\ |E_{in}(h)-E_{out}(h)|&gt;\epsilon]\leq 4m_H(2N)·exp(-\frac{\epsilon^2}{8}N)$</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/lecture-VCBound/" rel="tag"># lecture VCBound</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/17/2017-07-17-Reports/" rel="next" title="Reports">
+                <i class="fa fa-chevron-left"></i> Reports
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/18/07-08-VCDimension-and-Error/" rel="prev" title="07-08-VCDimension-and-Error">
+                07-08-VCDimension-and-Error <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/tx.jpg"
+               alt="Yunlaixu" />
+          <p class="site-author-name" itemprop="name">Yunlaixu</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yunlaix" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yunlaix" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/sunny-23/" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Trade-off-on-M"><span class="nav-number">1.</span> <span class="nav-text">Trade-off on M</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Effective-Number-of-Hypothesis"><span class="nav-number">2.</span> <span class="nav-text">Effective Number of Hypothesis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Restriction-of-Break-Point"><span class="nav-number">3.</span> <span class="nav-text">Restriction of Break Point</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bounding-Function"><span class="nav-number">4.</span> <span class="nav-text">Bounding Function</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Replace-M-by-m-H-N"><span class="nav-number">5.</span> <span class="nav-text">Replace M by $m_H(N)$</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
