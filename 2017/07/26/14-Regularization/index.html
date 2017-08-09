@@ -1,0 +1,785 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="lecture,Regularization," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Regularization Hypothesis Setidea : ‘step back’ from $H_{10}$ to $H_2$  E.g.hypothesis $w$ in $H_{10}$ : $w_0+w_1x+w_2x^2+…+w_{10}x^{10}$hypothesis $w$ in $H_2$ : $w_0+w_1x+w_2x^2$that is, $H_2=H_{10">
+<meta name="keywords" content="lecture,Regularization">
+<meta property="og:type" content="article">
+<meta property="og:title" content="14-Regularization">
+<meta property="og:url" content="http://yoursite.com/2017/07/26/14-Regularization/index.html">
+<meta property="og:site_name" content="YLX">
+<meta property="og:description" content="Regularization Hypothesis Setidea : ‘step back’ from $H_{10}$ to $H_2$  E.g.hypothesis $w$ in $H_{10}$ : $w_0+w_1x+w_2x^2+…+w_{10}x^{10}$hypothesis $w$ in $H_2$ : $w_0+w_1x+w_2x^2$that is, $H_2=H_{10">
+<meta property="og:image" content="http://yoursite.com/images/regular.PNG">
+<meta property="og:image" content="http://yoursite.com/images/overfitting.PNG">
+<meta property="og:image" content="http://yoursite.com/images/legendre.PNG">
+<meta property="og:image" content="http://yoursite.com/images/l1l2.PNG">
+<meta property="og:image" content="http://yoursite.com/images/regularizer.PNG">
+<meta property="og:updated_time" content="2017-07-30T05:04:41.454Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="14-Regularization">
+<meta name="twitter:description" content="Regularization Hypothesis Setidea : ‘step back’ from $H_{10}$ to $H_2$  E.g.hypothesis $w$ in $H_{10}$ : $w_0+w_1x+w_2x^2+…+w_{10}x^{10}$hypothesis $w$ in $H_2$ : $w_0+w_1x+w_2x^2$that is, $H_2=H_{10">
+<meta name="twitter:image" content="http://yoursite.com/images/regular.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/26/14-Regularization/"/>
+
+
+
+
+
+  <title>14-Regularization | YLX</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YLX</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/26/14-Regularization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yunlaixu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YLX">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">14-Regularization</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-26T13:32:33+08:00">
+                2017-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h1 id="Regularization-Hypothesis-Set"><a href="#Regularization-Hypothesis-Set" class="headerlink" title="Regularization Hypothesis Set"></a>Regularization Hypothesis Set</h1><p><strong>idea : ‘step back’ from $H_{10}$ to $H_2$</strong></p>
+<blockquote>
+<p>E.g.<br>hypothesis $w$ in $H_{10}$ : $w_0+w_1x+w_2x^2+…+w_{10}x^{10}$<br>hypothesis $w$ in $H_2$ : $w_0+w_1x+w_2x^2$<br>that is, $H_2=H_{10}$ AND ‘constraint that $w_3=w_4=…=w_{10}=0$ ‘ .</p>
+</blockquote>
+<a id="more"></a>
+<p>即通过 constraint 减小假设空间，后面会提到这也某种程度上降低了 $d_{vc}$ ，从而降低模型的复杂度，进而起到减缓过拟合的作用 .</p>
+<p>下面以回归任务的 error function 为例分析如何设计 constraint ($L_2$) ，当然后面我们会看到分析过程并不依赖于具体的 error function ，所以只要合适，我们也可以将 $L_2$ 用于 Logistic regression 中 .</p>
+<p>首先我们将条件 $w_3=w_4=…=w_{10}=0$ 放宽到不为0的最多三个，也就是在回归问题中我们要求解：<br>$$\mathop{min}\limits_{w\epsilon \mathbb{R}^{10+1}}E_{in}(w)\qquad s.t.\sum\limits_{q=0}^{10}[w_q\neq 0]\leq 3$$<br>more flexible than $H_2$ ($H_2\subset H_2^{‘}$) &amp; lesss risky than $H_{10}$ ($H_2^{‘}\subset H_{10}$)<br>但是对于求解这样的问题是 NP-hard 的 .</p>
+<p>我们进一步放宽条件，使得 $w$ 不会太大，即求解这样的问题：<br>$$\mathop{min}\limits_{w\epsilon \mathbb{R}^{10+1}}E_{in}(w)\qquad s.t.\sum\limits_{q=0}^{10}w_q^2\leq C$$<br>$H(C)$ : overlaps but not exactly the same as $H_2^{‘}$<br>soft and smooth structure over $C\geq 0$ :<br>$$H(0)\subset H(1.126)\subset …\subset H(1126)\subset…\subset H(\infty)$$</p>
+<p>再接下来就是从这样的正规化过的假设空间 $H(C)$ 中找到最优解 .</p>
+<hr>
+<h1 id="Weight-Decay-Regularization"><a href="#Weight-Decay-Regularization" class="headerlink" title="Weight Decay Regularization"></a>Weight Decay Regularization</h1><p>$$\mathop{min}\limits_{w\epsilon \mathbb{R}^{Q+1}} E_{in}(w)=\frac{1}{N}(Zw-y)^T(Zw-y)\ \  s.t. w^Tw\leq C$$<br><img src="/images/regular.PNG" alt=""></p>
+<p>$w$ 通常会出现在红圈的边缘上，更新的方向还是梯度相反方向 $-\bigtriangledown E_{in}(w)$ . 如果  $-\bigtriangledown E_{in}(w)$  与 $w$ 不平行的话，我们就需要向梯度反向在 $w$ 垂直的方向上的投影方向上更新，一直到这两者平行 .</p>
+<p>want: find Lagrange multiplier $\lambda &gt;0$ and $w_{REG}$ such that $\bigtriangledown E_{in}(w_{REG})+\frac {2\lambda}{N}w_{REG}=0$<br>try to solve the Equation by substituting $\bigtriangledown E_{in}(w_{REG})$ :<br>$$\frac {2}{N}(Z^TZw_{REG}-Z^TY)+\frac {2\lambda}{N}w_{WEG}=0$$<br>optimal solution :<br>$$w_{REG}\leftarrow (Z^TZ+\lambda I)^{-1}Z^TY$$<br>if we have $\lambda\geq0$ , then we have closed-form solution .</p>
+<p><strong>Augmented Error</strong><br>Actually, solving $$\bigtriangledown E_{in}(w_{REG})+\frac {2\lambda}{N}w_{REG}=0$$ equivalent to minimizing $$E_{in}(w)+\frac{\lambda}{N}w^Tw$$ regularization with augmented error instead of constrained $E_{in}$ $$w_{REG}\leftarrow \mathop{argmin}\limits_wE_{aug}(w)\ for\ given\ \lambda\geq0$$<br>minimizing unconstrained $E_{aug}$ effectively minimizes some C-constrained $E_{in}$</p>
+<p>E.g.<br><img src="/images/overfitting.PNG" alt=""></p>
+<blockquote>
+<p>philosophy: a little regularization goes a long way !</p>
+<p>call ‘$+\frac\lambda Nw^Tw$’ weighted-decay regularization :<br>larger $\lambda$ $\Leftrightarrow$ prefer shorter $w$ $\Leftrightarrow$ effectively smaller C<br>—&gt;go with ‘any’ transform + linear model .</p>
+</blockquote>
+<p><strong>Legendre Polynomials</strong><br>For naive polynomial transform :<br>$$\Phi(x)=(1,x,x^2,…,x^Q)$$<br>when $x_n\epsilon[-1,+1]$ , $x_n^Q$ really small, needing larger $w_q$ .<br>Use normalized polynomial transform :<br>$$(1, L_1(x), L_2(x), … , L_Q(x))$$<br>‘orthonormal basis functions’ called Legendre Polynomials .<br>E.g.<img src="/images/legendre.PNG" alt=""></p>
+<hr>
+<h1 id="Regularization-and-VC-Theory"><a href="#Regularization-and-VC-Theory" class="headerlink" title="Regularization and VC Theory"></a>Regularization and VC Theory</h1><p>Augmented Error : $E_{aug}(w)=E_{in}(w)+\frac{\lambda}{N}w^Tw$<br>VC Bound : $\qquad\ \  E_{out}(w)\leq E_{in}(w)+\Omega(H)$</p>
+<blockquote>
+<p>regularizer $w^w$ : complexity of a single hypothesis<br>generalization price $\Omega(H)$ : complexity of a hypothesis set<br>if $\frac\lambda N\Omega(w)$ ‘represents’ $\Omega(H)$ well, $E_{aug}$ is a better proxy of $E_{out}$ than $E_{in}$ .</p>
+</blockquote>
+<p><strong>Effective VC Dimension</strong><br>$$\mathop{min}\limits_{w\epsilon \mathbb{R}^{d+1}}E_{aug}(w)=E_{in}(w)+\frac \lambda N\Omega(w)$$<br>model complexity : $d_{vc}(H)=d+1$, because {$w$} ‘all considered’ during minimization<br>{$w$} ‘actually needed’ : $H(C)$, with some $C$ equivalent to $\lambda$<br>$d_{vc}(H(C))$ : effective VC dimension $d_{EFF}(H, A)$</p>
+<blockquote>
+<p>explanation of regularization :<br>$d_{vc}(H)$ large, while $d_{EFF}(H,A)$ small if $A$ regularized .</p>
+</blockquote>
+<hr>
+<h1 id="General-Regularizers"><a href="#General-Regularizers" class="headerlink" title="General Regularizers"></a>General Regularizers</h1><p>want : constraint in the ‘direction’ of target function .</p>
+<ul>
+<li>target-depedent : some properties of target, if known . E.g. symmetry regularizer : $\sum[q\ is\ odd]w_q^2$</li>
+<li>plausible ; direction towards smoother or simpler . E.g. sparsity (L1) regularizer : $\sum|w_q|$</li>
+<li>friendly : easy to optimize . E.g. weight-decay (L2) regularizer : $\sum w_q^2$</li>
+</ul>
+<blockquote>
+<p>augmented error = error $\hat{err}$ + regularizer $\Omega$ .</p>
+</blockquote>
+<p>L1 VS. L2<br><img src="/images/l1l2.PNG" alt=""></p>
+<p>The optimal $\lambda$<br><img src="/images/regularizer.PNG" alt=""></p>
+<ul>
+<li>more noise $\Leftrightarrow$ more regularization needed</li>
+<li>noise unknown —&gt; important to make proper choices .</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/lecture/" rel="tag"># lecture</a>
+          
+            <a href="/tags/Regularization/" rel="tag"># Regularization</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/26/2017-07-26-Regular-Expression-Matching/" rel="next" title="Regular-Expression-Matching">
+                <i class="fa fa-chevron-left"></i> Regular-Expression-Matching
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/28/Adrein-Movies/" rel="prev" title="Adrein-Movies">
+                Adrein-Movies <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/tx.jpg"
+               alt="Yunlaixu" />
+          <p class="site-author-name" itemprop="name">Yunlaixu</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yunlaix" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yunlaix" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/sunny-23/" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Regularization-Hypothesis-Set"><span class="nav-number">1.</span> <span class="nav-text">Regularization Hypothesis Set</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Weight-Decay-Regularization"><span class="nav-number">2.</span> <span class="nav-text">Weight Decay Regularization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Regularization-and-VC-Theory"><span class="nav-number">3.</span> <span class="nav-text">Regularization and VC Theory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#General-Regularizers"><span class="nav-number">4.</span> <span class="nav-text">General Regularizers</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
