@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next mist use-motion" lang="">
+<html class="theme-next mist" lang="">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -106,7 +104,7 @@
 <meta property="og:image" content="http://yoursite.com/images/table4.PNG">
 <meta property="og:image" content="http://yoursite.com/images/table5.PNG">
 <meta property="og:image" content="http://yoursite.com/images/step1.PNG">
-<meta property="og:updated_time" content="2017-07-30T05:02:01.946Z">
+<meta property="og:updated_time" content="2017-08-21T08:15:52.678Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="05-06-From-M-to-m">
 <meta name="twitter:description" content="Trade-off on M can we make sure that $E_{out}(g)$ is close enough to $E_{in}(g)$ ? can we make $E_{out}(g)$ small enough?  $\mathbb{P}[BAD]\leq 2·M·exp(…)$对于小的M来说，我们可以做到第一点，但是第二点做不到，因为选择太少了；对于大的M来说，我">
@@ -121,7 +119,7 @@
     scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
+    motion: false,
     duoshuo: {
       userId: '0',
       author: 'Author'
@@ -210,7 +208,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -220,7 +218,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -290,7 +288,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-17T19:31:49+08:00">
                 2017-07-17
@@ -368,7 +366,7 @@
 <p>Bounding Function: The Theorem<br>$B(N,k)\leq \sum_{i=0}^{k-1}\binom{N}{i}$<br>右边最高项是$N^{k-1}\Rightarrow m_H(N)\ is\ poly(N)\ if\ break\ point\ exists$.<br>$’\leq’\ can\ be\ ‘=’\ actually$.</p>
 </blockquote>
 <hr>
-<h1 id="Replace-M-by-m-H-N"><a href="#Replace-M-by-m-H-N" class="headerlink" title="Replace M by $m_H(N)$"></a>Replace M by $m_H(N)$</h1><p>want: $\mathbb{P}[\exists h\epsilon H\ s.t.\ |E_{in}(h)-E_{out}(h)|&gt;\epsilon]\leq 2·m_H(N)·exp(-2\epsilon^2N)$<br>from: $\mathbb{P}[\exists h\epsilon H\ s.t.\ |E_{in}(h)-E_{out}(h)|&gt;\epsilon]\leq 2·M·exp(-2\epsilon^2N)$<br>但我们不能够直接这么做，因为原始式子中|H|是无限的，$E_{out}(h)$是无限的，之前所讨论的是基于采样的in-sample N. 所以为了替换成功我们还需要作些推导.</p>
+<h1 id="Replace-M-by-m-H-N"><a href="#Replace-M-by-m-H-N" class="headerlink" title="Replace M by $m_H(N)$"></a>Replace M by $m_H(N)$</h1><p>$M$ 的计数应当是所有可能的 $D$, 而不是 $samples$, 也就是无论 $m_H(N)$ 如何, $N$ 应当是无限的. 如果要替换成关于 $samples$ 的 $N$, 就需要结合 $validation$ 估计 $E_{out}$ 和相应的概率知识作替换.<br>want: $\mathbb{P}[\exists h\epsilon H\ s.t.\ |E_{in}(h)-E_{out}(h)|&gt;\epsilon]\leq 2·m_H(N)·exp(-2\epsilon^2N)$<br>from: $\mathbb{P}[\exists h\epsilon H\ s.t.\ |E_{in}(h)-E_{out}(h)|&gt;\epsilon]\leq 2·M·exp(-2\epsilon^2N)$<br>但我们不能够直接这么做，因为原始式子中|H|是无限的，$E_{out}(h)$是无限的，之前所讨论的是基于采样的in-sample N. 所以为了替换成功我们还需要作些推导.</p>
 <blockquote>
 <p><strong>Step1</strong>: Replace $E_{out}\ by\ E_{in}^{‘}$, i.e. sample verification set $D’$ of size N to caculate $E_{in}^{‘}$<br><img src="/images/step1.PNG" alt=""><br>$\frac {1}{2}\mathbb{P}[\exists h\epsilon H\ s.t.\ |E_{in}(h)-E_{out}(h)|&gt;\epsilon]\leq \mathbb{P}[\exists h\epsilon H\ s.t.\ |E_{in}(h)-E_{in}^{‘}(h)|&gt;\frac {\epsilon}{2}]$<br>对于上式，基于从$E_{out}$ 到 $E_{in}^{‘}$ 的替换，第一个1/2表示替换之后式子中差值的绝对值大于误差值的概率增加了一倍；第二个1/2表示更加严格的误差限制(数学需要？).</p>
 <p><strong>Step2</strong>: Decompose $H$ by Kind<br>$BAD\leq 2\mathbb{P}[\exists h\epsilon H\ s.t.\ |E_{in}(h)-E_{in}^{‘}(h)|&gt;\frac {\epsilon}{2}]\\<br>\qquad\ \leq 2m_H(N)\mathbb{P}[fixed\ h\ s.t.\ |E_{in}(h)-E_{in}^{‘}(h)|&gt;\frac {\epsilon}{2}]$<br>$E_{in}(h)$ 有 N 笔数据，$E_{in}^{‘}(h)$ 也有 N 笔不同的数据，无限的 $H$ 变成了$|H(x_1,…,x_N,x_1^{‘},…,x_N^{‘})|$，这样我们终于可以使用$m_H(2N)$来计算BAD-overlap了.</p>
@@ -481,10 +479,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -504,8 +502,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">22</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -517,8 +515,8 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">32</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -604,7 +602,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -613,7 +611,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

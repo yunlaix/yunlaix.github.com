@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next mist use-motion" lang="">
+<html class="theme-next mist" lang="">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -101,7 +99,7 @@
 <meta property="og:site_name" content="YLX">
 <meta property="og:description" content="Perceptron Hypothesis Set For $x=(x_1,x_2,…,x_d)$ ‘features of customer’, compute a weighted ‘score’ and:$\quad \quad \quad$ approve credit if $\quad \sum_{i=1}^{d}{w_ix_i} &amp;gt; threshold$$\quad \qua">
 <meta property="og:image" content="http://yoursite.com/images/perceptrons.PNG">
-<meta property="og:updated_time" content="2017-07-30T05:01:21.962Z">
+<meta property="og:updated_time" content="2017-08-09T03:12:17.284Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="02-Learning-to-Answer-Yes-or-No">
 <meta name="twitter:description" content="Perceptron Hypothesis Set For $x=(x_1,x_2,…,x_d)$ ‘features of customer’, compute a weighted ‘score’ and:$\quad \quad \quad$ approve credit if $\quad \sum_{i=1}^{d}{w_ix_i} &amp;gt; threshold$$\quad \qua">
@@ -116,7 +114,7 @@
     scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
+    motion: false,
     duoshuo: {
       userId: '0',
       author: 'Author'
@@ -205,7 +203,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -215,7 +213,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -285,7 +283,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-15T14:38:19+08:00">
                 2017-07-15
@@ -356,14 +354,14 @@
 <li>$w_f$ perfect hence every $x_n$ correctly away from line:<br>$\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad y_{n(t)}w_f^Tx_{n(t)}\geqslant \mathop{min}\limits_ny_nw_f^Tx_n&gt;0$</li>
 <li>$w_f^Tw_t\uparrow$ by updating with any $(x_{n(t)},y_{n(t)})$<br>$<br>\begin{eqnarray}<br>w_f^Tw_{t+1}&amp;=&amp;w_f^T(w_t+y_{n(t)}x_{n(t)})\\<br>&amp;\geq&amp;w_f^Tw_t+\mathop{min}\limits_ny_nw_f^Tx_n\\<br>&amp;&gt;&amp;w_f^Tw_t+0<br>\end{eqnarray}<br>$</li>
 </ul>
-<p>$w_t$ appears more aligned with w_f after update.</p>
+<p>$w_t$ appears more aligned with $w_f$ after update.</p>
 <h2 id="PLA-Fact-w-t-Does-not-Grow-too-Fast"><a href="#PLA-Fact-w-t-Does-not-Grow-too-Fast" class="headerlink" title="PLA Fact: $w_t$ Does not Grow too Fast"></a>PLA Fact: $w_t$ Does not Grow too Fast</h2><p>$w_t$ changed only when mistake $\Leftrightarrow sign(w_f^Tx_{n(t)})\neq y_{n(t)}\Leftrightarrow y_{n(t)}w_f^Tx_{n(t)}\leqslant 0$</p>
 <ul>
-<li>mistake ‘limits’ $|w_t|^2$ growth, even when updating with ‘longest’ $x_n$<br>$<br>\begin{eqnarray}<br>|w_{t+1}|^2&amp;=&amp;|w_t+y_{n(t)}x_{n(t)}|^2\\<br>&amp;=&amp;|w_t|^2+2y_{n(t)}w_t^Tx_{n(t)}+|y_{n(t)}x_{n(t)}|^2\\<br>&amp;\leq&amp;|w_t|^2+0+|y_{n(t)}x_{n(t)}|^2\\<br>&amp;\leq&amp;|w_t|^2+\mathop{max}\limits_n|y_nx_n|^2<br>\end{eqnarray}<br>$<blockquote>
+<li>mistake ‘limits’ $|w_t|^2$ growth, even when updating with ‘longest’ $x_n$<br>$<br>\begin{eqnarray}<br>|w_{t+1}|^2&amp;=&amp;|w_t+y_{n(t)}x_{n(t)}|^2\\<br>&amp;=&amp;|w_t|^2+2y_{n(t)}w_t^Tx_{n(t)}+|y_{n(t)}x_{n(t)}|^2\\<br>&amp;\leq&amp;|w_t|^2+0+|y_{n(t)}x_{n(t)}|^2\\<br>&amp;\leq&amp;|w_t|^2+\mathop{max}\limits_n|y_nx_n|^2<br>\end{eqnarray}<br>$</li>
+</ul>
+<blockquote>
 <p>start from $w_0=0$, after $T$ mistake corrections:<br>$\frac {w_f^T}{|w_f|} \frac {w_T}{|w_T|} \geq \sqrt{T}·constant$<br>PLA告诉我们只要线性可分并且通过错误修正，那么PLA会停下来. 这里PLA实现简单，而且适用于任何维度$d$.<br>问题在于我们不知道是否$D$线性可分，并且不确定到停止需要多长时间(虽然实际上很快).</p>
 </blockquote>
-</li>
-</ul>
 <hr>
 <h2 id="Non-Separable-Data-Learning-with-Noisy-data"><a href="#Non-Separable-Data-Learning-with-Noisy-data" class="headerlink" title="Non-Separable Data(Learning with Noisy data)"></a>Non-Separable Data(Learning with Noisy data)</h2><ul>
 <li>assume ‘little’ noise: $y_n=f(x_n)$ usually</li>
@@ -479,10 +477,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -502,8 +500,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">22</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -515,8 +513,8 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">32</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -602,7 +600,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -611,7 +609,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

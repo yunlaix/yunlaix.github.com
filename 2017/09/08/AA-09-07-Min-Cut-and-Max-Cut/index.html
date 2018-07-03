@@ -1,0 +1,784 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist" lang="">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="AA,MinCut,MaxCut," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Bases: Graph Cut/ Multi-graphs/ Contraction/ ChainRule/ Induction/ Min-CutMin-cut problem:  Input: an undirected graph $G(V,E)$; Output: a cut $C$ in $G$ with the smallest size $|C|$.  A canonical de">
+<meta name="keywords" content="AA,MinCut,MaxCut">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AA-09-07-Min-Cut-and-Max-Cut">
+<meta property="og:url" content="http://yoursite.com/2017/09/08/AA-09-07-Min-Cut-and-Max-Cut/index.html">
+<meta property="og:site_name" content="YLX">
+<meta property="og:description" content="Bases: Graph Cut/ Multi-graphs/ Contraction/ ChainRule/ Induction/ Min-CutMin-cut problem:  Input: an undirected graph $G(V,E)$; Output: a cut $C$ in $G$ with the smallest size $|C|$.  A canonical de">
+<meta property="og:updated_time" content="2017-09-14T11:54:29.354Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AA-09-07-Min-Cut-and-Max-Cut">
+<meta name="twitter:description" content="Bases: Graph Cut/ Multi-graphs/ Contraction/ ChainRule/ Induction/ Min-CutMin-cut problem:  Input: an undirected graph $G(V,E)$; Output: a cut $C$ in $G$ with the smallest size $|C|$.  A canonical de">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/08/AA-09-07-Min-Cut-and-Max-Cut/"/>
+
+
+
+
+
+  <title>AA-09-07-Min-Cut-and-Max-Cut | YLX</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YLX</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/08/AA-09-07-Min-Cut-and-Max-Cut/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yunlaixu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YLX">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">AA-09-07-Min-Cut-and-Max-Cut</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-08T20:53:11+08:00">
+                2017-09-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h2 id="Bases-Graph-Cut-Multi-graphs-Contraction-ChainRule-Induction"><a href="#Bases-Graph-Cut-Multi-graphs-Contraction-ChainRule-Induction" class="headerlink" title="Bases: Graph Cut/ Multi-graphs/ Contraction/ ChainRule/ Induction/ "></a>Bases: Graph Cut/ Multi-graphs/ Contraction/ ChainRule/ Induction/ </h2><h1 id="Min-Cut"><a href="#Min-Cut" class="headerlink" title="Min-Cut"></a>Min-Cut</h1><p><strong>Min-cut problem:</strong></p>
+<ul>
+<li>Input: an undirected graph $G(V,E)$;</li>
+<li>Output: a cut $C$ in $G$ with the smallest size $|C|$.</li>
+</ul>
+<p>A canonical deterministic algorithm for this problem is through the <a href="http://en.wikipedia.org/wiki/Max-flow_min-cut_theorem" target="_blank" rel="external">max-flow min-cut theorem</a>. Actually, max-flow is a dual problem of min-cut, when max-flow solved, min-cut solved. This takes $(n-1)\times maxFlowTime$ where $n=|V|$ is the number of vertices.</p>
+<p>With <em>contraction</em>, Karger’s algorithm uses a simple idea:</p>
+<ul>
+<li>At each step we randomly select an edge in the current multi-graph to contract until there are only two vertices left.</li>
+<li>The parallel edges between these two remaining vertices must be a cut of the original graph.</li>
+<li>We return this cut and hope that with good chance this gives us a minimum cut.</li>
+</ul>
+<p><strong>RandomContract(Karger 1993)</strong><br>$\quad$Input: multi-graph $G(V,E)$.<br>$\quad$while $|V|&gt;2$ do</p>
+<ul>
+<li>choose an edge $uv\in E$ uniformly at random;</li>
+<li>$G=Contract(G,uv)$;</li>
+</ul>
+<p>$\quad$return $C=E(v_{n-1},v_n)$.</p>
+<p><em>With suitable choice of data structures, each operation $Contract(G,e)$ can be implemented within running time $O(n)$ where $n = | V |$ is the number of vertices. (By using the bucket sort.)</em><br>Thus, RandomContract can be done in $O(n^2)$ with $n$ vertices.</p>
+<h2 id="Analysis-of-accuracy-RandomContract"><a href="#Analysis-of-accuracy-RandomContract" class="headerlink" title="Analysis of accuracy(RandomContract):"></a>Analysis of accuracy(RandomContract):</h2><p>Proposition 1:<br>$\quad$If $C$ is a minimum cut in a multi-graph $G$ and $e\notin C$, then $C$ is still a minimum cut in the contracted graph $G^{‘}=Contract(G,e)$.<br>Proposition 2:<br>$\quad$If $C$ is a min-cut in a multi-graph $G(V,E)$, then $|E|\geq\frac{|V||C|}{2}$.</p>
+<p>We arbitrarily fix the input multi-graph $G$ and any particular minimum cut $C$ in $G$.</p>
+<p>\begin{align}<br>p_{\text{correct}}<br>&amp;=\Pr[\,\text{a minimum cut is returned by }RandomContract\,]\\<br>&amp;\ge<br>\Pr[\,C\mbox{ is returned by }{RandomContract}\,]\\<br>&amp;=<br>\Pr[\,e_i\not\in C\mbox{ for all }i=1,2,\ldots,n-2\,]\\<br>&amp;=<br>\prod_{i=1}^{n-2}\Pr[e_i\not\in C\mid \forall j\lt i, e_j\not\in C]\\<br>&amp;\ge<br>\prod_{i=1}^{n-2}\left(1-\frac{2}{n-i+1}\right)\\<br>&amp;=<br>\prod_{k=3}^{n}\frac{k-2}{k}\\<br>&amp;= \frac{2}{n(n-1)}.<br>\end{align}<br>This gives us the following theorem:<br>For any multigraph with n vertices, the RandomContract algorithm returns a minimum cut with probability at least $\frac{2}{n(n-1)}$.<br>And by $t=\frac{n(n-1)ln\ n}{2}$ times independently running, i.e. $O(n^4log\ n)$, we can found a minimum cut with high probability($1-\frac1n$).</p>
+<p>A Corollary:<br>For any graph G(V,E) of n vertices, the number of distinct minimum cuts in G is at most $\frac{n(n-1)}{2}$.</p>
+<hr>
+<h2 id="Fast-Min-Cut"><a href="#Fast-Min-Cut" class="headerlink" title="Fast Min-Cut"></a>Fast Min-Cut</h2><p>Recall calculating lower bound of $p$, the factor $(1-\frac2{n-i+1})$ is decreasing as $i$ increases. Idea is to stopping when $G$ becomes small enough.</p>
+<p><strong>RandomContract$(G, t)$</strong><br>$\quad$Input: multi-graph $G(V,E)$, and integer $t\geq2$.<br>$\quad$while $|V|&gt;t$ do</p>
+<ul>
+<li>choose an edge $uv\in E$ uniformly at random;</li>
+<li>$G=Contract(G,uv)$;</li>
+</ul>
+<p>$\quad$return G.</p>
+<p>The FastCut algorithm is recursively defined as follows.<br><strong>FastCut(G)</strong><br>$\quad$Input: multi-graph G(V,E);<br>$\quad$if $|V|\neq6$ then return a mincut by brute force;<br>$\quad$else let $t=\left \lceil 1+|V|/\sqrt2 \right \rceil$:<br>$\qquad G_1=RandomContract(G,t);$<br>$\qquad G_2=RandomContract(G,t);$<br>$\qquad$return the smaller one of $FastCut(G_1)$ and $FastCut(G_2)$.</p>
+<p>By the same analysis as in the case of RandomContract, we have</p>
+<p>\begin{align}<br>&amp;\Pr[C\text{ survives all contractions in }RandomContract(G,t)]\\<br>=<br>&amp;\prod_{i=1}^{n-t}\Pr[C\text{ survives the }i\text{-th contraction}\mid C\text{ survives the first }(i-1)\text{-th contractions}]\\<br>\ge<br>&amp;\prod_{i=1}^{n-t}\left(1-\frac{2}{n-i+1}\right)\\<br>=<br>&amp;\prod_{k=t+1}^{n}\frac{k-2}{k}\\<br>=<br>&amp;\frac{t(t-1)}{n(n-1)}.<br>\end{align}</p>
+<p>when $t=\left \lceil 1+|V|/\sqrt2 \right \rceil$, this probability is at least 1/2 due to fixed $t$.</p>
+<h2 id="analysis-of-accuracy"><a href="#analysis-of-accuracy" class="headerlink" title="analysis of accuracy"></a>analysis of accuracy</h2><p>Let $A$ be <em>C survives all contractions in RandomContract(G,t);</em><br>Let $B$ be <em>size of min-cut is unchanged after RandomContract(G,t);</em></p>
+<p>\begin{align}<br>p(n)<br>&amp;=<br>\Pr[\,FastCut(G)\text{ returns a min-cut in }G\,]\\<br>&amp;=<br>\Pr[\,\text{ a min-cut of }G\text{ is returned by }FastCut(G_1)\text{ or }FastCut(G_2)\,]\\<br>&amp;\ge<br>1-\left(1-\Pr[B\wedge FastCut(G_1)\text{ returns a min-cut in }G_1\,]\right)^2\\<br>&amp;\ge<br>1-\left(1-\Pr[A\wedge FastCut(G_1)\text{ returns a min-cut in }G_1\,]\right)^2\\<br>&amp;=<br>1-\left(1-\Pr[A]\Pr[ FastCut(G_1)\text{ returns a min-cut in }G_1\mid A]\right)^2\\<br>&amp;\ge<br>1-\left(1-\frac{1}{2}p\left(\left\lceil1+n/\sqrt{2}\right\rceil\right)\right)^2,<br>\end{align}<br>The base case is that $p(n)=1$ for $n\neq6$, and $p(n)=\omega(\frac1{log\ n})$.</p>
+<p>Similarly, time complexity: $T(n)=2T(\left \lceil 1+n/\sqrt2 \right \rceil)+O(n^2)$. With the base case $T(n)=O(1)$ for $n\neq6$, $T(n)=O(n^2log\ n)$.</p>
+<hr>
+<h1 id="Max-Cut"><a href="#Max-Cut" class="headerlink" title="Max-Cut"></a>Max-Cut</h1><p>Max-cut problem:</p>
+<ul>
+<li>Input: an undirected graph $G(V,E)$;</li>
+<li>Output: a cut $C$ in $G$ with the largest size $|C|$.</li>
+</ul>
+<p>a typical MAX-CSP problem ???</p>
+<p>Since the problem is NP-hard, we may compromise our goal and allow algorithm to not always find the optimal solution. However, we still want to guarantee that the algorithm always returns a relatively good solution on all possible instances. This notion is formally captured by <strong>approximation algorithms</strong> and <strong>approximation ratio</strong>.</p>
+<p><strong>Approximation ratio</strong><br>Considering a greedy algorithm that trying to maximize the current $|E(S,T)|$ at every step. Let $SOL_G$ be the size of the cut $|E(S,T)|$ returned by the greedy algorithm. It is trivial that $SOL_G\neq OPT_G$. We say the approximation ratio of the greedy algorithm is $\alpha$ for some $0&lt;\alpha\neq1$, if $\frac{SOL_G}{OPT_G}\geq \alpha$ for every possible instance $G$ of max-cut.<br>The GreedyMaxCut is a 0.5-approximation algorithm for the max-cut problem.</p>
+<p>\begin{align}<br>SOL_G<br>&amp;= \sum_{i=1}^n\max\left(|E(S_i, \{v_i\})|,|E(T_i, \{v_i\})|\right)\\<br>&amp;\ge \frac{1}{2}\sum_{i=1}^n\left(|E(S_i, \{v_i\})|+|E(T_i, \{v_i\})|\right)\\<br>&amp;=\frac{1}{2}|E|\\<br>&amp;\ge\frac{1}{2}OPT_G.<br>\end{align}</p>
+<h2 id="Derandomization-by-conditional-expectation"><a href="#Derandomization-by-conditional-expectation" class="headerlink" title="Derandomization by conditional expectation"></a>Derandomization by conditional expectation</h2><p>The greedy algorithm for max-cut is actually due to a derandomization of average-case。</p>
+<h2 id="Derandomization-by-pairwise-independence"><a href="#Derandomization-by-pairwise-independence" class="headerlink" title="Derandomization by pairwise independence"></a>Derandomization by pairwise independence</h2><p>Enumerate vertices as $V=\{v_1,v_2,\ldots,v_n\}$.<br>let $k=\lceil\log (n+1)\rceil$;<br>for all $\vec{x}\in\{0,1\}^k$:<br>$\qquad$initialize $S_{\vec{x}}=T_{\vec{x}}=\emptyset$;<br>$\qquad$for $i=1, 2, \ldots, n$<br>$\qquad\quad$if $\bigoplus_{j:\lfloor i/2^j\rfloor\bmod 2=1}x_j=1$<br>$\qquad\quad$else $v_i$ joins $T_{\vec{x}}$;<br>return the $\{S_{\vec{x}},T_{\vec{x}}\}$ with the largest $|E(S_{\vec{x}},T_{\vec{x}})|$.</p>
+<p>The algorithm has approximation ratio 1/2 and runs in polynomial time.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AA/" rel="tag"># AA</a>
+          
+            <a href="/tags/MinCut/" rel="tag"># MinCut</a>
+          
+            <a href="/tags/MaxCut/" rel="tag"># MaxCut</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/30/203-Kernel-SVM/" rel="next" title="203-Kernel-SVM">
+                <i class="fa fa-chevron-left"></i> 203-Kernel-SVM
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/14/AA-09-14-PIT-Fingerprinting/" rel="prev" title="AA-09-14-PIT-Fingerprinting">
+                AA-09-14-PIT-Fingerprinting <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/tx.jpg"
+               alt="Yunlaixu" />
+          <p class="site-author-name" itemprop="name">Yunlaixu</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yunlaix" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yunlaix" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/sunny-23/" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bases-Graph-Cut-Multi-graphs-Contraction-ChainRule-Induction"><span class="nav-number">1.</span> <span class="nav-text">Bases: Graph Cut/ Multi-graphs/ Contraction/ ChainRule/ Induction/ </span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Min-Cut"><span class="nav-number"></span> <span class="nav-text">Min-Cut</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Analysis-of-accuracy-RandomContract"><span class="nav-number">1.</span> <span class="nav-text">Analysis of accuracy(RandomContract):</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fast-Min-Cut"><span class="nav-number">2.</span> <span class="nav-text">Fast Min-Cut</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#analysis-of-accuracy"><span class="nav-number">3.</span> <span class="nav-text">analysis of accuracy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Max-Cut"><span class="nav-number"></span> <span class="nav-text">Max-Cut</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Derandomization-by-conditional-expectation"><span class="nav-number">1.</span> <span class="nav-text">Derandomization by conditional expectation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Derandomization-by-pairwise-independence"><span class="nav-number">2.</span> <span class="nav-text">Derandomization by pairwise independence</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

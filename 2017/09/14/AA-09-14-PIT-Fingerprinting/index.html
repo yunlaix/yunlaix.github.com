@@ -1,0 +1,772 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist" lang="">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="PIT,Fingerprinting," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="bases: Fundamental Theorem of Algebra/ Field/ ring of multivariate polynomials/ Chebyshev’s theorem/ Prime Number Theorem">
+<meta name="keywords" content="PIT,Fingerprinting">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AA-09-14-PIT-Fingerprinting">
+<meta property="og:url" content="http://yoursite.com/2017/09/14/AA-09-14-PIT-Fingerprinting/index.html">
+<meta property="og:site_name" content="YLX">
+<meta property="og:description" content="bases: Fundamental Theorem of Algebra/ Field/ ring of multivariate polynomials/ Chebyshev’s theorem/ Prime Number Theorem">
+<meta property="og:updated_time" content="2017-09-17T11:43:16.979Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AA-09-14-PIT-Fingerprinting">
+<meta name="twitter:description" content="bases: Fundamental Theorem of Algebra/ Field/ ring of multivariate polynomials/ Chebyshev’s theorem/ Prime Number Theorem">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/14/AA-09-14-PIT-Fingerprinting/"/>
+
+
+
+
+
+  <title>AA-09-14-PIT-Fingerprinting | YLX</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YLX</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/14/AA-09-14-PIT-Fingerprinting/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yunlaixu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YLX">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">AA-09-14-PIT-Fingerprinting</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-14T19:55:45+08:00">
+                2017-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>bases: <a href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_algebra" target="_blank" rel="external">Fundamental Theorem of Algebra</a>/ Field/ <a href="http://en.wikipedia.org/wiki/Polynomial_ring#The_polynomial_ring_in_several_variables" target="_blank" rel="external">ring of multivariate polynomials</a>/ <a href="https://en.wikipedia.org/wiki/Bertrand%27s_postulate" target="_blank" rel="external">Chebyshev’s theorem</a>/ <a href="http://en.wikipedia.org/wiki/Prime_number_theorem" target="_blank" rel="external">Prime Number Theorem</a></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>For univariate polynomial of degree $d$, it is trivial that the probability hitting occurs of randomly picked $r$ from fixed $S$ is $\Pr[f(r)=0]\le\frac{d}{|S|}.$ By fixing $S\subseteq\mathbb{F}$ to be 2d, this probability is at most 1/2, we can reduce it to an arbitrarily small constant $\delta$ by repeat the above testing independently for $\log_2 \frac{1}{\delta}$ times, since the error probability decays geometrically as we repeat the algorithm independently.</p>
+<h2 id="Communication-Complexity-of-Equality"><a href="#Communication-Complexity-of-Equality" class="headerlink" title="Communication Complexity of Equality"></a>Communication Complexity of Equality</h2><p>$$\mathrm{EQ}:\{0,1\}^n\times\{0,1\}^n\rightarrow\{0,1\}$$</p>
+<p><strong>A Randomized protocol for EQ</strong><br>Bob does:</p>
+<ul>
+<li>pick $r\in\mathbb{Z}_p$ uniformly at random;</li>
+<li>send $r$ and $g(r)$ to Alice;</li>
+</ul>
+<p>Upon receiving $r$ and $g(r)$ Alice does:</p>
+<ul>
+<li>compute $f(r)$;</li>
+<li>if $f(r)=g(r)$ return Y, else N.</li>
+</ul>
+<p>$\Pr[f(r)=g(r)]\le \frac{n-1}{p}$<br>By choosing $p$ to be a prime in the interval $[n^2, 2n^2]$, the protocol’s false positive probablity is $O(1/n)$, with communication complexity $O(log\ n)$.</p>
+<hr>
+<h1 id="True-form-of-Polynomial-Identity-Testing-PIT"><a href="#True-form-of-Polynomial-Identity-Testing-PIT" class="headerlink" title="True form of Polynomial Identity Testing(PIT)"></a>True form of Polynomial Identity Testing(PIT)</h1><p>Input: $f(x_1,x_2,\ldots,x_n)=\sum_{i_1,i_2,\ldots,i_n\ge 0\atop i_1+i_2+\cdots+i_n\le d}a_{i_1,i_2,\ldots,i_n}x_{1}^{i_1}x_2^{i_2}\cdots x_{n}^{i_n}$.<br>Determine whether $f\equiv0$.</p>
+<p><strong>Randomized algorithm for multivariate PIT</strong></p>
+<ul>
+<li>suppose we have a finite subset $S\subseteq\mathbb{F}$;</li>
+<li>pick $r_1,r_2,\ldots,r_n\in S$ uniformly and independently at random;</li>
+<li>if $f(\vec{r})=f(r_1,r_2,\ldots,r_n) = 0$ then return “yes” else return “no”.</li>
+</ul>
+<p>Again, the false positive probability’s upper bound, as Schwartz-Zippel Theorem<br>told us, $\Pr[f(r_1,r_2,\ldots,r_n)=0]\le\frac{d}{|S|}.$</p>
+<p>Proof by Induction:<br>Induction basis: …<br>Induction hypothesis: …<br>Induction step:<br>$f(x_1,x_2,\ldots,x_n)=\sum_{i=0}^kx_n^{i}f_i(x_1,x_2,\ldots,x_{n-1})$<br>where $k$ is the highest degree of $x_n$. In particular, we write $f$ as:<br>$f(x_1,x_2,\ldots,x_n)=x_n^k f_k(x_1,x_2,\ldots,x_{n-1})+\bar{f}(x_1,x_2,\ldots,x_n)$<br>That is when $f_k(r_1,r_2,\ldots,r_{n-1})$ non-zero, the problem reduce to unvariate case with guarantee that $\bar{f}$ has no $x_n^k$ term, otherwise, it is a probability conditioning on $f_k(r_1,r_2,\ldots,r_{n-1})=0$ which can be calculate from hypothesis.<br>By the law of total probability, we have</p>
+<p>\begin{align}<br>&amp;\Pr[f(r_1,r_2,\ldots,r_n)=0]\\<br>=<br>&amp;\Pr[f(\vec{r})=0\mid f_k(r_1,r_2,\ldots,r_{n-1})=0]\cdot\Pr[f_k(r_1,r_2,\ldots,r_{n-1})=0]\\<br>&amp;+\Pr[f(\vec{r})=0\mid f_k(r_1,r_2,\ldots,r_{n-1})\neq0]\cdot\Pr[f_k(r_1,r_2,\ldots,r_{n-1})\neq0].<br>\end{align}</p>
+<p>\begin{align}<br>(*)<br>&amp;\qquad<br>&amp;\Pr[f_k(r_1,r_2,\ldots,r_{n-1})=0]\le\frac{d-k}{|S|}.<br>\end{align}</p>
+<p>\begin{align}<br>(**)<br>&amp;\qquad<br>&amp;\Pr[f(\vec{r})=0\mid f_k(r_1,r_2,\ldots,r_{n-1})\neq0]=\Pr[g_{r_1,\ldots,r_{n-1}}(r_n)=0\mid f_k(r_1,r_2,\ldots,r_{n-1})\neq0]\le\frac{k}{|S|}<br>\end{align}</p>
+<p>$\Pr[f(r_1,r_2,\ldots,r_n)=0]<br>\le\frac{d-k}{|S|}+\frac{k}{|S|}=\frac{d}{|S|}.$</p>
+<hr>
+<h1 id="Fingerprinting"><a href="#Fingerprinting" class="headerlink" title="Fingerprinting"></a>Fingerprinting</h1><h2 id="By-PIT"><a href="#By-PIT" class="headerlink" title="By PIT"></a>By PIT</h2><p>For any bit-string $x\in\{0,1\}^n$, its random fingerprint is $\mathrm{FING}(x)=\sum_{i=1}^n x_i r^{i}$, where the  additions and multiplications are defined over a finite field $\mathbb{Z}_p$, and $r$ is chosen uniformly at random from $\mathbb{Z}_p$, where $p$ is some suitable prime which can be represented in $\Theta(\log n)$ bits. For instance, we can choose $p$ to be any prime from the interval $[n^2, 2n^2]$. Due to Chebyshev’s theorem, such prime must exist. If $x\neq y$, $\Pr[\mathrm{FING}(x)=\mathrm{FING}(y)] \le \frac{n-1}{p}\le \frac{1}{n}.$</p>
+<h2 id="By-randomized-checksum"><a href="#By-randomized-checksum" class="headerlink" title="By randomized checksum"></a>By randomized checksum</h2><p><strong>Communication protocol for EQ by random checksum</strong><br>Bob does:<br>$\qquad$for some parameter k,<br>$\qquad$ - choose a prime $p\in[k]$ uniformly at random;<br>$\qquad$ - send $p$ and $x\ mod\ p$ to Alice.<br>Upon receiving $p$ and $x\ mod\ p$, Alice does:<br>$\qquad$ - check whether $x\bmod p=y\bmod p$.</p>
+<p>Communication complexity is obviously $O(\log k)$. The error probability $\Pr[z\bmod p=0]\le\frac{\mbox{the number of prime divisors of }z}{\mbox{the number of primes in }[k]}$, let $k=2n^2\ln n$, we have $\Pr[z\bmod p=0]\le\frac{n}{\pi(k)}\sim\frac{1}{n}$.</p>
+<hr>
+<h1 id="Checking-distinctness"><a href="#Checking-distinctness" class="headerlink" title="Checking distinctness"></a>Checking distinctness</h1><ul>
+<li>input: two multisets $A=\{a_1,a_2,…,a_n\}$ and $B=\{b_1,b_2,…,b_n\}$ where $a_1,a_2,…,b_1,b_2,…,b_n\in\{1,2,…,n\}$</li>
+<li>Determine whether $A=B$.</li>
+</ul>
+<p>We define a unvariate polynomial $f_A\in\mathbb{Z}_p[x]$ over the finite field $\mathbb{Z}_p$ as follows: $f_A(x)=\prod_{i=1}^n(x-a_i)$, where $+$ and $·$ are defined over the finite field $\mathbb{Z}_p$. And the random fingerprinting function is: $\mathrm{FING}(A)=f_A(r)=\prod_{i=1}^n(r-a_i)$.</p>
+<p><strong>Theorem(Lipton 1989)</strong><br>if $A\neq B$, then $Pr[FING(A)=FING(B)]=O(1/n)$ with p in $[(n\log n)^2, 2(n\log n)^2]$.</p>
+<p>Assuming that $A\neq B$, we must have $\tilde{f}_A\not\equiv\tilde{f}_B$. But $f_A\equiv f_B$ is possible, then by the law of total probability:<br>$Pr[FING(A)=FING(B)]=Pr[f_A(r)=f_B(r)|f_A\not\equiv f_B]Pr[f_A\not\equiv f_B]+Pr[f_A(r)=f_B(r)|f_A\equiv f_B]Pr[f_A\equiv f_B]$</p>
+<p>We finally have $Pr[FING(A)=FING(B)]=O(1/n).$</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PIT/" rel="tag"># PIT</a>
+          
+            <a href="/tags/Fingerprinting/" rel="tag"># Fingerprinting</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/08/AA-09-07-Min-Cut-and-Max-Cut/" rel="next" title="AA-09-07-Min-Cut-and-Max-Cut">
+                <i class="fa fa-chevron-left"></i> AA-09-07-Min-Cut-and-Max-Cut
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/03/17-07-03-Summary-MLT/" rel="prev" title="17-07-03-Summary-MLT">
+                17-07-03-Summary-MLT <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/tx.jpg"
+               alt="Yunlaixu" />
+          <p class="site-author-name" itemprop="name">Yunlaixu</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yunlaix" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yunlaix" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/sunny-23/" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Communication-Complexity-of-Equality"><span class="nav-number">2.</span> <span class="nav-text">Communication Complexity of Equality</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#True-form-of-Polynomial-Identity-Testing-PIT"><span class="nav-number"></span> <span class="nav-text">True form of Polynomial Identity Testing(PIT)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fingerprinting"><span class="nav-number"></span> <span class="nav-text">Fingerprinting</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#By-PIT"><span class="nav-number">1.</span> <span class="nav-text">By PIT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#By-randomized-checksum"><span class="nav-number">2.</span> <span class="nav-text">By randomized checksum</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Checking-distinctness"><span class="nav-number"></span> <span class="nav-text">Checking distinctness</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
