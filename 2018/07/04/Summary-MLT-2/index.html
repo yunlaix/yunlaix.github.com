@@ -1,0 +1,757 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist" lang="">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LEC,MLT,Consistency," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Inequality信息熵不等式K-L距离$D(P||Q)$; 联合熵$H(X,Y)$, 互信息$I(X,Y)$, 条件熵$H(X|Y)$; Han不等式. 基本不等式Markov不等式: 给定$\epsilon&amp;gt;0$, X是一个非负随机变量, 有:$$Pr[X\geq\epsilon]\leq\frac{E[X]}{\epsilon}$$. 另由该不等式可以直接导出Chebyshev不等">
+<meta name="keywords" content="LEC,MLT,Consistency">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Summary-MLT-2">
+<meta property="og:url" content="http://yoursite.com/2018/07/04/Summary-MLT-2/index.html">
+<meta property="og:site_name" content="YLX">
+<meta property="og:description" content="Inequality信息熵不等式K-L距离$D(P||Q)$; 联合熵$H(X,Y)$, 互信息$I(X,Y)$, 条件熵$H(X|Y)$; Han不等式. 基本不等式Markov不等式: 给定$\epsilon&amp;gt;0$, X是一个非负随机变量, 有:$$Pr[X\geq\epsilon]\leq\frac{E[X]}{\epsilon}$$. 另由该不等式可以直接导出Chebyshev不等">
+<meta property="og:updated_time" content="2018-07-05T10:21:17.631Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Summary-MLT-2">
+<meta name="twitter:description" content="Inequality信息熵不等式K-L距离$D(P||Q)$; 联合熵$H(X,Y)$, 互信息$I(X,Y)$, 条件熵$H(X|Y)$; Han不等式. 基本不等式Markov不等式: 给定$\epsilon&amp;gt;0$, X是一个非负随机变量, 有:$$Pr[X\geq\epsilon]\leq\frac{E[X]}{\epsilon}$$. 另由该不等式可以直接导出Chebyshev不等">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/04/Summary-MLT-2/"/>
+
+
+
+
+
+  <title>Summary-MLT-2 | YLX</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YLX</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/04/Summary-MLT-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yunlaixu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YLX">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Summary-MLT-2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-04T15:49:03+08:00">
+                2018-07-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h1 id="Inequality"><a href="#Inequality" class="headerlink" title="Inequality"></a>Inequality</h1><h2 id="信息熵不等式"><a href="#信息熵不等式" class="headerlink" title="信息熵不等式"></a>信息熵不等式</h2><p>K-L距离$D(P||Q)$; 联合熵$H(X,Y)$, 互信息$I(X,Y)$, 条件熵$H(X|Y)$; Han不等式.</p>
+<h2 id="基本不等式"><a href="#基本不等式" class="headerlink" title="基本不等式"></a>基本不等式</h2><p><strong>Markov不等式</strong>: 给定$\epsilon&gt;0$, X是一个非负随机变量, 有:<br>$$Pr[X\geq\epsilon]\leq\frac{E[X]}{\epsilon}$$. 另由该不等式可以直接导出Chebyshev不等式.</p>
+<p><strong>Jensen不等式</strong>: 对凸函数$f$, 有:<br>$$E[f(X)]\geq f(E[X])$$</p>
+<p><strong>Chernoff不等式</strong>: $X_1,…,X_n$是n独立同分布随机变量且满足$X_i\in[\alpha,\beta]$, 令$\bar X=\sum_{i=1}^nX_i/n$, 有:<br>$$Pr[\bar X-\mu\geq\epsilon]\leq exp(\frac{-2n\epsilon^2}{(\beta-\alpha)^2})$$, 该不等式可以从Markov不等式出发, 并利用Moment-Generating-Function证明.</p>
+<p><strong>McDiarmid不等式</strong>: $X_1,…,X_m$是空间$\cal X$的m个独立随机变量, 令$f:\cal X^m\rightarrow\mathbb R$是一个关于$X_1,…,X_m$的实值函数, 并满足对任意的$X_1,…,X_m, X_i^{‘}\in\cal X$, 都有:<br>$$|f(X_1,…,X_i,…,X_m)-f(X_1,…,X_i{‘},…,X_m)|\leq c_i$$, 那么对任意$\epsilon&gt;0$, 有:<br>$$Pr[f(X_1,…,X_m)-E[f(X_1,…,X_m)]\geq\epsilon]\leq exp(-2\epsilon^2/\sum_{i=1}^mc_i^2)$$.</p>
+<hr>
+<h1 id="AdaBoost"><a href="#AdaBoost" class="headerlink" title="AdaBoost"></a>AdaBoost</h1><p>集成学习是一类著名机器学习方法, 通过使用一系列学习器进行学习, 并使用某种规则将各个学习器进行整合从而获得比单个学习器显著优越的泛化性能, 常用方法包括Boosting, Bagging, random forest等, 其中, Boosting族算法最著名的代表是AdaBoost. 从基学习器的线性组合去优化指数损失函数出发, 可以直接得到AdaBoost算法中的权重更新公式.</p>
+<p>若从VC维角度去分析AdaBoost的泛化性, 只会得到, 随着迭代轮数的增加, AdaBoost所产生的学习器函数空间复杂度将增加, 从而导致AdaBoost学习方法过拟合风险. 事实并非如此, 即使训练轮数增加, 仍不易陷入过拟合, 甚至当训练错误率为零时还可以降低泛化错误率, 为解释这一现象, 需要新的理论: 著名的间隔理论. 事实上, AdaBoost优化的是间隔分布, 当轮数增加, 泛化错误率越小.</p>
+<hr>
+<h1 id="Consistency"><a href="#Consistency" class="headerlink" title="Consistency"></a>Consistency</h1><p>贝叶斯(<strong>最优</strong>)分类器和贝叶斯风险分别为:<br>$$g^<em>(x)=\mathbb I[\eta(x)&gt;1/2]\qquad R^</em>=E_{x\sim\cal D_{\cal X}}[min{\eta(x),1-\eta(x)}]$$</p>
+<p>称学习方法F满足一致性(贝叶斯一致性, 弱一致性), 如果有:<br>$$E_{S_n}[R(F_{S_n})]\rightarrow R^*$$, 当$n\rightarrow\infty$. 一致性反映了学习函数的错误率随样本的增加而趋于贝叶斯错误率.</p>
+<h2 id="替代损失函数一致性"><a href="#替代损失函数一致性" class="headerlink" title="替代损失函数一致性"></a>替代损失函数一致性</h2><p>对于常见的二分类问题, 由于0-1损失函数是非凸与不连续的, 直接优化是一个NP-hard问题, 从而导致计算上不可行. 在实际的算法设计过程中, 一般会对分类错误率损失函数进行凸放松, 即对$\mathbb I[\cdot]$的上界进行凸放松. e.g. AdaBoost算法优化指数损失函数$l(g(x),y)=exp(-yg(x))$, SVM采用hinge损失函数等等. 为此引入新的函数$\phi:\cal R\rightarrow\cal R$, 使得$l(g(x),y)=\phi(yg(x))$. 这里称函数$\phi$为替代损失函数, 一般是连续的凸函数.</p>
+<p>对于给定数据集和替代损失函数, 我们可以优化替代损失函数在数据集上的平均损失, 由于$\phi$一般情况下是连续的凸函数, 因此各种优化技术可用于上述替代损失函数. 从本质上看, 这种方法可被看作随机近似最小化替代损失函数期望风险:<br>$$R_\phi(g)=E_{(X,Y)\sim\cal D}[\phi(Yg(X))]$$</p>
+<p>常见的替代损失函数如下几种:</p>
+<ul>
+<li>最小二乘损失函数(最小二乘SVMs方法) $\phi(t)=(1-t)^2$</li>
+<li>Hinge损失函数(SVMs方法) $\phi(t)=max(0, 1-t)$</li>
+<li>平方Hinge损失函数(平滑SVMs方法) $\phi(t)=(max(0,1-t))^2$</li>
+<li>指数损失函数(Boosting方法) $\phi(t)=exp(-t)$</li>
+<li>对数损失函数(LogisticRegression方法) $\phi(t)=log(1+exp(-t))$</li>
+</ul>
+<p><strong>替代损失函数一致性问题</strong>: 通过优化替代损失函数所学得的学习器$\hat g_1,\hat g_2,…,\hat g_n,…$, 如果$R_\phi(\hat g_n)\rightarrow R_\phi^<em>\quad(n\rightarrow\infty)$, 则有$R(\hat g_n)\rightarrow R^</em>$, 称该替代损失函数与0-1分类损失函数具有一致性.<br>注意: 这里一致性不仅仅包含在最优时是一致的, 还包括一种趋近的性质. 可以证明, 上述几种损失函数都具有这样的一致性.</p>
+<h2 id="优化AUC替代函数一致性"><a href="#优化AUC替代函数一致性" class="headerlink" title="优化AUC替代函数一致性"></a>优化AUC替代函数一致性</h2><p>类似于0-1损失最优函数和错误率, 可以定义AUC最优函数和错误率以及相应的一致性定义. 下面直接给出结论: 若函数$\phi:\mathbb R\rightarrow\mathbb R$是可导的, 非单调递减的凸函数, 并且满足$\phi{‘}(0)&lt;0$, 那么替代损失函数$\Phi(g,X,X^{‘})=\phi(g(X)-g(X^{‘}))$与AUC具有一致性.</p>
+<p>由此可以得到, 指数替代函数, 对数替代函数, 平方Hinge替代函数与AUC具有一致性, 而Hinge替代函数在t=1不可导, 不能得到结论.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LEC/" rel="tag"># LEC</a>
+          
+            <a href="/tags/MLT/" rel="tag"># MLT</a>
+          
+            <a href="/tags/Consistency/" rel="tag"># Consistency</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/03/Summary-MLT-1/" rel="next" title="Summary-MLT-1">
+                <i class="fa fa-chevron-left"></i> Summary-MLT-1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/05/Summary-MLT-3/" rel="prev" title="Summary-MLT-3">
+                Summary-MLT-3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/tx.jpg"
+               alt="Yunlaixu" />
+          <p class="site-author-name" itemprop="name">Yunlaixu</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yunlaix" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yunlaix" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/sunny-23/" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Inequality"><span class="nav-number">1.</span> <span class="nav-text">Inequality</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#信息熵不等式"><span class="nav-number">1.1.</span> <span class="nav-text">信息熵不等式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本不等式"><span class="nav-number">1.2.</span> <span class="nav-text">基本不等式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AdaBoost"><span class="nav-number">2.</span> <span class="nav-text">AdaBoost</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Consistency"><span class="nav-number">3.</span> <span class="nav-text">Consistency</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#替代损失函数一致性"><span class="nav-number">3.1.</span> <span class="nav-text">替代损失函数一致性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化AUC替代函数一致性"><span class="nav-number">3.2.</span> <span class="nav-text">优化AUC替代函数一致性</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

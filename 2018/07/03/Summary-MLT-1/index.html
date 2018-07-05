@@ -1,0 +1,761 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist" lang="">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LEC,MLT,PAC," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="计算学习理论(computational learning theory)研究的是关于通过”计算”来进行学习的理论, 即关于机器学习的理论基础, 其目的是分析学习任务的困难本质, 为学习算法提供理论保证, 并根据分析结果指导算法设计.">
+<meta name="keywords" content="LEC,MLT,PAC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Summary-MLT-1">
+<meta property="og:url" content="http://yoursite.com/2018/07/03/Summary-MLT-1/index.html">
+<meta property="og:site_name" content="YLX">
+<meta property="og:description" content="计算学习理论(computational learning theory)研究的是关于通过”计算”来进行学习的理论, 即关于机器学习的理论基础, 其目的是分析学习任务的困难本质, 为学习算法提供理论保证, 并根据分析结果指导算法设计.">
+<meta property="og:updated_time" content="2018-07-04T14:13:38.029Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Summary-MLT-1">
+<meta name="twitter:description" content="计算学习理论(computational learning theory)研究的是关于通过”计算”来进行学习的理论, 即关于机器学习的理论基础, 其目的是分析学习任务的困难本质, 为学习算法提供理论保证, 并根据分析结果指导算法设计.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/03/Summary-MLT-1/"/>
+
+
+
+
+
+  <title>Summary-MLT-1 | YLX</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YLX</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/03/Summary-MLT-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yunlaixu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YLX">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Summary-MLT-1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-03T15:49:03+08:00">
+                2018-07-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>计算学习理论(computational learning theory)研究的是关于通过”计算”来进行学习的理论, 即关于机器学习的理论基础, 其目的是分析学习任务的困难本质, 为学习算法提供理论保证, 并根据分析结果指导算法设计.<br><a id="more"></a></p>
+<hr>
+<h1 id="约定的符号与定义"><a href="#约定的符号与定义" class="headerlink" title="约定的符号与定义"></a>约定的符号与定义</h1><p>样例集: $$D=\{(x_1,y_1), (x_2,y_2), …, (x_m,y_m)\}, x_i\in\cal X, y_i\in \cal Y=\{-1,+1\}.$$<br>并假设X中的所有的样本都来源与一个隐含未知的分布$\cal D$, D中的所有样本都是独立地从这个分布上采样得到, 即独立同分布(i.i.d.)样本.</p>
+<p>概念(concept)与概念类: 用c表示, 是从样本空间$\cal X$到标记空间$\cal Y$的映射, 若对任何样例(x,y)都有c(x)=y, 则称c为目标概念; 所有我们希望学得的目标概念所构成的集合称为”概念类”, 用$\cal C$表示.</p>
+<p>假设(hypothesis)与假设空间: 给定学习算法$\cal L$, 它所考虑的所有概念的集合称为假设空间, 用$\cal H$表示, 且某一个假设$h\in\cal H$. 显然h也是$\cal X$到$\cal Y$的映射.</p>
+<p>泛化误差: $$E(h; \cal D)=P_{x\sim D}(h(x)\neq y)$$<br>经验误差: $$\hat E(h; D)=\frac{1}{m}\sum_{i=1}^m\mathbb{I}(h(x_i)\neq y_i).$$ 并定义假设空间中泛化误差最小的假设$h^*\in\cal H$.</p>
+<hr>
+<h1 id="PAC"><a href="#PAC" class="headerlink" title="PAC"></a>PAC</h1><p><strong>PAC辨识(PAC Identify)</strong>: 对$0&lt;\epsilon, \delta&lt;1$, 所有$c\in\cal C$和分布$\cal D$, 若存在学习算法$\cal L$, 其输出假设$h\in\cal H$满足: $$P(E(h)\leq\epsilon)\geq1-\delta$$, 则称学习算法$\cal L$能从假设空间$\cal H$中辨识概念类$\cal C$.</p>
+<p><strong>PAC可学习(PAC Learnable)</strong>: 存在学习算法$\cal L$和多项式函数poly(.,.,.), 使得对于任何$m\geq poly(1/\epsilon, 1/\delta, size(x), size(c))$, $\cal L$能从$\cal H$中PAC辨识概念类$\cal C$, 则称概念类$\cal C$对于假设空间$\cal H$而言是PAC可学习的. 同理, 若考虑算法运行时间, 也可以定义PAC学习算法.</p>
+<p><strong>不可知PAC可学习(agnostic PAC learnable)</strong>: 对$0&lt;\epsilon, \delta&lt;1$, 所有$c\in\cal C$和分布$\cal D$, 若存在学习算法$\cal L$, 其输出假设$h\in\cal H$满足: $$P(E(h)-E(h^*)\leq\epsilon)\geq1-\delta$$, 则称假设空间$\cal H$是不可知PAC可学习的.</p>
+<p>注: 这里我们关注的主要是不可知PAC可学习, 不可知PAC可学习关注的是泛化误差界, 而只要学习算法满足经验误差最小化原则(ERM), 即返回的假设的经验误差不会比最优假设的经验误差小, 再通过集中不等式(hoffeding inequality)将经验误差与泛化误差的界bound住, 就可以得到泛化误差界. 因此我们主要关注经验误差与泛化误差的上界$\hat E(h)-E(h)$. 对于单个假设h, 这个上界可以由m控制住, 但是由于union bound, 我们是从假设空间选择一个假设, 因此要考虑整个假设空间, 即假设空间复杂度.</p>
+<hr>
+<h1 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h1><p><strong>VC维</strong>: 与数据分布无关, 根据增长函数, 对分, 打散等定义可描述为: 存在大小为d的示例集D能被$\cal H$打散, 任意大小为d+1的示例集D不能被$\cal H$打散, 也就是增长函数$\prod_{\cal H}(m)$在m&gt;d后开始以多项式增长而不是以指数增长. 根据sauer定理, 可以采用关于d的式子控制住增长函数, 因此可以用来衡量假设空间复杂度.</p>
+<p><strong>Rademacher复杂度</strong>: 一定程度上考虑了数据分布以获得更紧的上界. 函数空间$\cal F$关于$\cal Z$的经验Rademacher复杂度定义为: $$\hat R_Z(\cal F)=\mathbb E_\sigma[\sup_{f\in\cal F}\frac{1}{m}\sum_{i=1}^m\sigma_if(z_i)]$$, 其中$\sigma_i$为取值{-1,+1}的服从均匀分布的随机变量, 上式值越接近1则假设空间表达能力越强. 在此基础上定义Rademacher复杂度: $$R_m(\cal F)=\mathbb E_{Z\subset\cal Z:|Z|=m}[\hat R_Z(\cal F)]$$</p>
+<hr>
+<h1 id="泛化性"><a href="#泛化性" class="headerlink" title="泛化性"></a>泛化性</h1><p>即经验误差与泛化误差之间的关系, 如前面所述, 这是我们主要的目标. 从VC维和Rademacher复杂度的角度分别看. 从VC维看, 分有限假设空间和无限假设空间:</p>
+<ul>
+<li>有限假设空间(可分情况): $Pr(h\in\cal H: E(h)&gt;\epsilon\wedge\hat E(h)=0)&lt;\delta\rightarrow\epsilon=O(\frac{\ln|\cal H|+\ln1/\delta}{m})$; 不可分情况: $Pr(|\hat E(h)-E(h)|\leq\sqrt{\frac{\ln|\cal H|+\ln2/\delta}{2m}})\geq1-\delta$.</li>
+<li>无限假设空间(有限VC维): $Pr(E(h)-\hat E(h)\leq\sqrt{\frac{8d\ln\frac{2em}{d}+8\ln4/\delta}{m}})\geq1-\delta$, 可以看到, VC维越大, 假设空间越复杂, 泛化误差收敛率也越慢. 由此也可以得到结论: 任何VC维有限的假设空间$\cal H$都是(不可知)PAC可学习的.<br>从Rademacher复杂度看, 对任意$h\in\cal H$, 下式以$1-\delta$成立:<br>$$E(h)\leq\hat E(h)+R_m(\cal H)+\sqrt{\frac{\ln(1/\delta)}{2m}}\\ E(h)\leq\hat E(h)+R_D(\cal H)+3\sqrt{\frac{\ln(2/\delta)}{2m}}$$<br>e.g. 通过引入间隔理论, 可以推导出SVM的Rademacher泛化误差界, 并且不依赖与VC维d: $$E(h)\leq\hat E_\rho(h)+2\sqrt{\frac{r^2\Lambda^2}{m\rho^2}}+\sqrt{\frac{\ln(1/\delta)}{2m}}$$, 其中$r, \Lambda, \rho$分别表示数据的”半径”, 权重w的”半径”, 想要获得的间隔大小.<br>注: 这里基于假设空间$\cal H$复杂度的不同衡量标准(VC维, Rademacher复杂度)均与具体的学习算法无关, 对所有的学习算法都适用.</li>
+</ul>
+<hr>
+<h1 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h1><p>为了给出更好的泛化界, 基于算法的分析的确可以给出更好的理论结果, 但这样的理论结果可能无法推广到作用于同一个假设空间的其他算法, 而我们可以将学习算法的一些一般性质与算法特性集合起来得到更好的理论结果, 即稳定性分析.</p>
+<p><strong>移除样例的稳定性</strong>: 若学习算法$\cal L$满足:$$|l (\cal L_D,z)-l (\cal L_{D^{\verb||i}},z)|\leq\beta,i=1,…,m$$, 则称$\cal L$关于损失函数$l$满足移除样例的$\beta$-均匀稳定性.</p>
+<p><strong>替换样例的稳定性</strong>: 若学习算法$\cal L$满足:$$|l (\cal L_D,z)-l (\cal L_{D^{i}},z)|\leq\gamma,i=1,…,m$$, 则称$\cal L$关于损失函数$l$满足替换样例的$\gamma$-均匀稳定性.<br>移除样例的稳定性包含替换样例的稳定性: $\gamma\leq2\beta$. 因此主要讨论替换样例稳定性.</p>
+<p><strong>基于稳定性的泛化误差</strong>:<br>$$l (\cal L, D)\leq\hat l (\cal L, D)+\gamma+(2m\gamma+M)\sqrt{\frac{\log(1/\delta)}{2m}}\\ l (\cal L, D)\leq l_{loo} (\cal L, D)+\beta+(4m\beta+M)\sqrt{\frac{\log(1/\delta)}{2m}}$$, 其中M为损失函数上界.</p>
+<p><strong>基于核正则化的算法稳定性</strong>: 定义$F_D$如下:<br>$$F_D(h)=\hat l_D(h)+\lambda||h||_K^2$$, 并定义$\sigma$-可容许性: 对于任何两个假设$h,h^{‘}\in\cal H$, 有:<br>$$|l(h^{‘}(x),y)-l(h(x),y)|\leq\sigma|h^{‘}(x)-h(x)|$$, 则称损失函数$l$对于假设空间$\cal H$是$\sigma$-可容许的. 实际上, 若损失函数$l$是$\rho$-lipschitz连续的, 那么$\sigma=\rho$. 并且, 根据$\sigma$可以得到$\gamma$上界: $$\gamma\leq\frac{\sigma^2r^2}{m\lambda}$$, 其中对于所有$x\in\cal X, K(x,x)\leq r^2$. 因此, 对于某个算法, 只要分析其损失函数得到$\sigma$, 就可以得到$\gamma$上界, 进而利用前述式子得到泛化误差界.</p>
+<p>注意: 基于核正则化的算法泛化误差界都具有形式: $l(\cal L,D)-\hat l(\cal L,D)\leq O(\frac{1}{\lambda\sqrt m})$, 因此, 仅当$\lambda\gg1/\sqrt m$时, 上面得到的泛化误差界才有意义.</p>
+<p><strong>正则化参数$\lambda$</strong>是样本大小m的函数: 对于较大的m, 希望正则化参数较小, 以减小正则化的作用. $\lambda$的大小影响着线性假设空间的范数大小, 较大的$\lambda$会导致较小的假设空间范数. 在这种意义下, $\lambda$也可以看作假设空间复杂程度的一种度量, 而$\lambda$需要满足的条件也可以解释为: 复杂度更小的假设空间具有更好的泛化性保障.</p>
+<p>由前述可得定理: 若学习算法$\cal L$时ERM且稳定的, 则假设空间$\cal H$是PAC可学习的. 事实上, 稳定性与假设空间并非无关, 由稳定性定义可知两者通过损失函数$l$联系起来.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LEC/" rel="tag"># LEC</a>
+          
+            <a href="/tags/MLT/" rel="tag"># MLT</a>
+          
+            <a href="/tags/PAC/" rel="tag"># PAC</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/14/AA-09-14-PIT-Fingerprinting/" rel="next" title="AA-09-14-PIT-Fingerprinting">
+                <i class="fa fa-chevron-left"></i> AA-09-14-PIT-Fingerprinting
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/04/Summary-MLT-2/" rel="prev" title="Summary-MLT-2">
+                Summary-MLT-2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/tx.jpg"
+               alt="Yunlaixu" />
+          <p class="site-author-name" itemprop="name">Yunlaixu</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yunlaix" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yunlaix" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/sunny-23/" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#约定的符号与定义"><span class="nav-number">1.</span> <span class="nav-text">约定的符号与定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PAC"><span class="nav-number">2.</span> <span class="nav-text">PAC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复杂度"><span class="nav-number">3.</span> <span class="nav-text">复杂度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#泛化性"><span class="nav-number">4.</span> <span class="nav-text">泛化性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#稳定性"><span class="nav-number">5.</span> <span class="nav-text">稳定性</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
